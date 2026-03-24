@@ -13,3 +13,5 @@ Article submissions on the [website](https://beta.techmc.wiki) automatically ope
 ## License
 
 All articles distrubuted under [CC-BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). You may also see the embedded [license copy](LICENSE).
+
+> Draft Test, as I do before
