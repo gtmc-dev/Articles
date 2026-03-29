@@ -1,6 +1,6 @@
 # 提交文章
 
-> 由 GPT 5.3 翻译自 [CONTRIBUTING.md](CONTRIBUTING.md)
+[English Version](CONTRIBUTING.md)
 
 ## 管理结构
 
@@ -24,6 +24,46 @@
 
 - 符合我们的质量标准
 - 所有冲突均已解决
+
+## 关于文章 slug
+
+Slug 是文章在 URL 中显示的标识符。例如文件路径：`TreeFarm/01-前置知识与树场的基本结构.md`实际对应 URL `techmc.wiki/articles/tree-farm/basics`。这是通过每篇文章顶部的 Front Matter 中的 `slug` 字段定义的。请确保为每篇文章设置唯一且描述性的 slug，以便读者能够通过 URL 轻松识别文章内容。
+
+审稿者在审核合并请求时也会检查 slug 的规范性。
+
+### 如何添加 slug
+
+如果你使用网页编辑器，那么在编辑文章时，页面顶部会有一个输入框让你填写 slug。阅读以下规范以确保你的 slug 符合要求。
+
+如果你在本地编辑器中编辑文章，请在 Markdown 文件的顶部添加 YAML frontmatter：
+
+```markdown
+---
+slug: "your-slug-here"
+---
+
+# 文章标题
+
+正文内容...
+```
+
+### Slug 规范
+
+Slug 必须符合以下格式：
+
+- 允许包含小写字母（a-z）、数字（0-9）、连字符（-）。
+- 不允许大写字母、下划线、空格、特殊字符、中文或者其他任何字符。
+- 不要将章节编号包含在 slug 中，例如 `01-title` 是不合适的，应该使用 `title` 作为 slug。
+
+### 为章节/子目录设置 slug
+
+每个一级目录必须有 `README.md` 文件，并在其中定义目录的 slug，格式同上。
+
+注意仓库不允许超过三级目录。
+
+### 省略子章节 slug
+
+允许省略子章节 slug（即显式设置为 `slug: ""`）。如果子章节 slug 为空且同级别没有 slug 冲突，该层级会被允许省略。例如，如果 `Twisuki/README.md` 中的 slug 为空，那么 `Twisuki/01-article.md` 的 URL 将直接是 `/articles/article`，而不是 `/articles/twisuki/article`。
 
 ## Git 规范
 
