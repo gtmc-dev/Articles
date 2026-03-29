@@ -1,3 +1,7 @@
+---
+slug: intro-demo
+---
+
 # 序
 这是序
 
