@@ -1,3 +1,7 @@
+---
+slug: "helper-mods"
+---
+
 # a-附页-辅助mod
 
 ## Chunkdebug
