@@ -10,7 +10,9 @@ slug: "introduction"
 本章旨在让读者能够有能力设计绿萌机器，**至至至少**完成一次绿萌扫盲，能够分析简单的绿萌机器。
 
 本书目前仅仅基于Molforte本人一人之拙见，**不代表整个绿萌圈的看法与设计思路**，希望读者能辩证阅读。
+
 ## 何为绿萌
+
 **关于对绿萌的解释**，Wiki上早已有答案：
 
 >以[![](https://zh.minecraft.wiki/images/BlockSprite_slime-block.png?78ebb)](https://zh.minecraft.wiki/w/%E9%BB%8F%E6%B6%B2%E5%9D%97 "黏液块")[黏液块](https://zh.minecraft.wiki/w/%E9%BB%8F%E6%B6%B2%E5%9D%97 "黏液块")为基础的[飞行技术](https://zh.minecraft.wiki/w/Tutorial:%E9%A3%9E%E8%A1%8C%E5%99%A8 "Tutorial:飞行器")。广义上指主黏液块的红石科技，狭义上专指黏液块活塞虫技术。
@@ -24,21 +26,27 @@ slug: "introduction"
 绿萌与械电高度相关，绿萌可视为可移动的械电科技，但两者实现思路上有很大不同。
 
 ## 前备知识
+
 为了防止你在食用本文时找不着北，在正式阅读本文之前，我们已经认为你熟悉原版Minecraft中各个红石元件的基本使用方法；并且我们认为你已经掌握了诸如Tweakeroo、Carpet、Litematica等生电基础模组的使用。
 
 ***
+
 # 2° 目录
 
 ## 本章目录
+
 - [01-预备篇：环境配置和基础知识](Molforte/01-预备篇：环境配置和基础知识.md )
 - [02-沉淀篇：基础模块的举例讲解](Molforte/02-沉淀篇：基础模块的举例讲解)
 - [03-实战篇：入门机器的快速上手](Molforte/03-实战篇：入门机器的快速上手)
 - [0a-附录](0a-附录.md)
 
 ## 配套教程
-+ 相关模块归纳（先欠着）
-+ 视频辅助教程（也先欠着）
+- 相关模块归纳（先欠着）
+- 视频辅助教程（也先欠着）
+
 ## 相关网站
+
 - [GraduateTextsInTechnicalMC](https://techmc.wiki/#/)
-- [投影蓝图在线生成器 - Reden](https://redenmc.com/zh_cn/litematica/old
+- [投影蓝图在线生成器 - Reden](<https://redenmc.com/zh_cn/litematica/old>
+
 ***
