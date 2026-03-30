@@ -1,4 +1,7 @@
 ---
+slug: entity-ai
 title: <EMPTY>
-slug: "entity-ai"
+intro-title: <EMPTY>
+index: 0
+is-appendix: false
 ---

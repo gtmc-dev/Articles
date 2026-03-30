@@ -1,6 +1,12 @@
 ---
-title: 序-demo
 slug: intro-demo
+title: 序-demo
+author: ''
+co-authors: []
+date: ''
+lastmod: ''
+index: 0
+is-advanced: false
 ---
 
 # 序

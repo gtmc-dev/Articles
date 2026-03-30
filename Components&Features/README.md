@@ -1,4 +1,7 @@
 ---
+slug: redstone-components
 title: <EMPTY>
-slug: "redstone-components"
+intro-title: <EMPTY>
+index: 0
+is-appendix: false
 ---

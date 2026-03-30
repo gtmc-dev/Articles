@@ -1,4 +1,7 @@
 ---
+slug: village
 title: <EMPTY>
-slug: "village"
+intro-title: <EMPTY>
+index: 0
+is-appendix: false
 ---

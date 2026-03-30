@@ -1,6 +1,12 @@
 ---
+slug: terminology
 title: b-附页-一些译名
-slug: "terminology"
+author: ''
+co-authors: []
+date: ''
+lastmod: ''
+index: 0
+is-advanced: false
 ---
 
 # b-附页-一些译名

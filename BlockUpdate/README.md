@@ -1,6 +1,9 @@
 ---
+slug: block-update
 title: <EMPTY>
-slug: "block-update"
+intro-title: <EMPTY>
+index: 0
+is-appendix: false
 ---
 
 # #00 引言

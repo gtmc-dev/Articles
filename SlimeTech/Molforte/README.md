@@ -1,6 +1,9 @@
 ---
+slug: introduction
 title: <EMPTY>
-slug: "introduction"
+intro-title: <EMPTY>
+index: 0
+is-appendix: false
 ---
 
 # 1° 概述

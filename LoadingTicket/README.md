@@ -1,4 +1,7 @@
 ---
+slug: chunk-loading
 title: <EMPTY>
-slug: "chunk-loading"
+intro-title: <EMPTY>
+index: 0
+is-appendix: false
 ---

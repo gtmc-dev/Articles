@@ -1,6 +1,12 @@
 ---
+slug: litematica
 title: litematica
-slug: "litematica"
+author: ''
+co-authors: []
+date: ''
+lastmod: ''
+index: 0
+is-advanced: false
 ---
 
 # #02 投影模组教程

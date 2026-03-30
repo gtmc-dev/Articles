@@ -1,4 +1,7 @@
 ---
+slug: entity-movement
 title: <EMPTY>
-slug: "entity-movement"
+intro-title: <EMPTY>
+index: 0
+is-appendix: false
 ---

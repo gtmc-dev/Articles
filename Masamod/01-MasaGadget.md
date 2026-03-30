@@ -1,6 +1,12 @@
 ---
+slug: masa-gadget
 title: MasaGadget
-slug: "masa-gadget"
+author: ''
+co-authors: []
+date: ''
+lastmod: ''
+index: 0
+is-advanced: false
 ---
 
 # #01 Masa Gadget
