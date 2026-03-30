@@ -1,5 +1,5 @@
 ---
-title: <EMPTY>
+title: MasaGadget
 slug: "masa-gadget"
 ---
 

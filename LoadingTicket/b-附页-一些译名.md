@@ -1,5 +1,5 @@
 ---
-title: <EMPTY>
+title: b-附页-一些译名
 slug: "terminology"
 ---
 

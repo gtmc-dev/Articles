@@ -1,5 +1,5 @@
 ---
-title: <EMPTY>
+title: litematica
 slug: "litematica"
 ---
 
