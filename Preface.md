@@ -23,8 +23,6 @@ slug: "preface"
 
 <!-- 文章中留有习题供读者自行练习，答案以 <hidden>这是答案，遮罩只有网页访问可用</hidden> 遮罩，鼠标悬浮在遮罩块上方即可显示。 -->
 
-<!-- 文章中部分内容会被写作#00aaff{awa}、#color:green{qwq}或<color blue>blue</color>，在网页端上大括号内内容会被着色标注。 -->
-
 可以来QQ裙吹水：[1031431170](https://qm.qq.com/q/fiXR8MyZA4)
 
 ## 著作权声明与授权信息
