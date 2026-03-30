@@ -1,4 +1,5 @@
 ---
+title: <EMPTY>
 slug: "masamod"
 ---
 # \#00 引言

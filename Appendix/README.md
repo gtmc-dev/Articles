@@ -1,3 +1,4 @@
 ---
+title: <EMPTY>
 slug: "appendix"
 ---
