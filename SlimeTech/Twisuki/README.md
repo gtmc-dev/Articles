@@ -1,15 +1,10 @@
 ---
-slug: introduction
-title: 序
-author: ''
-co-authors: []
-date: ''
-lastmod: ''
+slug: "twisuki"
+title: Twisuki版
+intro-title: 序
 index: 0
-is-advanced: false
+is-appendix: false
 ---
-
-# #00 序
 
 ---
 
