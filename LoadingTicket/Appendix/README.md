@@ -1,5 +1,5 @@
 ---
-slug: ''
+slug: ""
 title: <EMPTY>
 title-en: <EMPTY>
 intro-title: <EMPTY>

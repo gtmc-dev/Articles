@@ -1,6 +1,6 @@
 # Articles
 
-Article storage for [*Gradutate Texts in Technical Minecraft*](https://beta.techmc.wiki).
+Article storage for [_Gradutate Texts in Technical Minecraft_](https://beta.techmc.wiki).
 
 ## Willing to contribute?
 

@@ -47,12 +47,14 @@ GTMC Team:
 - 协作 / Petris, void, XJH_Jorhai
 - 鸣谢 / Fallen_Breath, 五羊飞 kaniol
 
-***本文档并非Minecraft官方文档，与Mojang和微软亦无从属关系。***
+**_本文档并非Minecraft官方文档，与Mojang和微软亦无从属关系。_**
 
-***This is not an official documentation. We are not affiliated with Mojang or Microsoft by any means.***
+**_This is not an official documentation. We are not affiliated with Mojang or Microsoft by any means._**
 
 ---
 
 [^1]: 像这样
+
 [^2]: 像像这这样样
+
 [^3]: 像像像这这这样样样

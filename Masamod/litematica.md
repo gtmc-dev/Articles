@@ -4,9 +4,9 @@ title: 投影模组教程
 title-en: <EMPTY>
 author: xhbsh
 co-authors:
-- 4rcadia
-date: '2025-01-23T11:50:01+08:00'
-lastmod: '2026-03-30T21:39:22-04:00'
+  - 4rcadia
+date: "2025-01-23T11:50:01+08:00"
+lastmod: "2026-03-30T21:39:22-04:00"
 index: 2
 is-advanced: false
 ---

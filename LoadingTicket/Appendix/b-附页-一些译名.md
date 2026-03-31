@@ -4,8 +4,8 @@ title: 中英术语表
 title-en: <EMPTY>
 author: 4rcadia
 co-authors: []
-date: '2026-03-30T20:28:54-04:00'
-lastmod: '2026-03-30T21:39:22-04:00'
+date: "2026-03-30T20:28:54-04:00"
+lastmod: "2026-03-30T21:39:22-04:00"
 index: 1
 is-advanced: false
 ---
@@ -13,7 +13,7 @@ is-advanced: false
 一些跟本文有关的译名，大部分取自于wiki。
 
 |                       全称                        | 译名     |
-|:-------------------------------------------------:|----------|
+| :-----------------------------------------------: | -------- |
 | **Lazy Processing Chunk/Lazy Load/Block Ticking** | 弱加载   |
 |    **Entity Processing Chunk/Entity Ticking**     | 强加载   |
 |       **Loading Border Chunk/Border Load**        | 加载边界 |
