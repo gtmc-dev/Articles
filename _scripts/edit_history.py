@@ -44,6 +44,24 @@ def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
     return first_author, co_authors
 
 
+def get_git_dates(file_path: Path) -> tuple[str, str]:
+    result = subprocess.run(
+        ["git", "log", "--follow", "--format=%aI", "--", str(file_path)],
+        capture_output=True,
+        text=True,
+        cwd=REPO_ROOT,
+    )
+
+    if result.returncode != 0:
+        return "", ""
+
+    dates = [d.strip() for d in result.stdout.strip().split("\n") if d.strip()]
+    if not dates:
+        return "", ""
+
+    return dates[-1], dates[0]
+
+
 def read_frontmatter(file_path: Path) -> tuple[dict, str]:
     with open(file_path, "r", encoding="utf-8") as f:
         content = f.read()
@@ -91,23 +109,31 @@ def main():
         rel_path = file_path.relative_to(REPO_ROOT)
 
         author, co_authors = get_git_authors(file_path)
+        date, lastmod = get_git_dates(file_path)
         if not author:
             print(f"{rel_path}: no git history found")
             continue
 
         frontmatter, body = read_frontmatter(file_path)
 
-        current_author = frontmatter.get("author", "")
-        current_co_authors = frontmatter.get("co-authors", [])
+        changes = {}
+        if frontmatter.get("author") != author:
+            changes["author"] = author
+        if frontmatter.get("co-authors") != co_authors:
+            changes["co-authors"] = co_authors
+        if frontmatter.get("date") != date:
+            changes["date"] = date
+        if frontmatter.get("lastmod") != lastmod:
+            changes["lastmod"] = lastmod
 
-        if current_author == author and current_co_authors == co_authors:
-            print(f"{rel_path}: up to date (author={author})")
-        else:
-            frontmatter["author"] = author
-            frontmatter["co-authors"] = co_authors
+        if changes:
+            for key, value in changes.items():
+                frontmatter[key] = value
             write_frontmatter(file_path, frontmatter, body)
-            print(f"{rel_path}: author={author}, co-authors={co_authors}")
+            print(f"{rel_path}: {changes}")
             updated += 1
+        else:
+            print(f"{rel_path}: up to date")
 
         processed += 1
 
