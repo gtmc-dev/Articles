@@ -1,7 +1,9 @@
 ---
 slug: molforte
 title: Molforte版
+title-en: <EMPTY>
 intro-title: 概述
+intro-title-en: <EMPTY>
 index: 0
 ---
 

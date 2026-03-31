@@ -1,9 +1,7 @@
 ---
-title: Preface
-slug: "preface"
+title: 引言
+slug: preface
 ---
-
-# 引言
 
 这是一本面向萌新的技术红石入门教材，也是一本面向熟练者的文档。
 

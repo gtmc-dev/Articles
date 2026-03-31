@@ -1,7 +1,9 @@
 ---
 slug: chunk-loading
 title: <EMPTY>
+title-en: <EMPTY>
 intro-title: 序
+intro-title-en: <EMPTY>
 index: 0
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: glossary
 title: 中英术语表
+title-en: <EMPTY>
 author: ''
 co-authors: []
 date: ''

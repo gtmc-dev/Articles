@@ -1,7 +1,9 @@
 ---
 slug: masamod
 title: <EMPTY>
+title-en: <EMPTY>
 intro-title: <EMPTY>
+intro-title-en: <EMPTY>
 index: 0
 ---
 # \#00 引言

@@ -1,6 +1,7 @@
 ---
 slug: masa-gadget
 title: MasaGadget
+title-en: <EMPTY>
 author: ''
 co-authors: []
 date: ''
