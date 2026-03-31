@@ -6,7 +6,7 @@ author: 4rcadia
 co-authors: []
 date: '2026-03-30T20:28:54-04:00'
 lastmod: '2026-03-30T21:39:22-04:00'
-index: -1
+index: 1
 is-advanced: false
 ---
 
