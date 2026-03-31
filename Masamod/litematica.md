@@ -1,16 +1,15 @@
 ---
 slug: litematica
-title: litematica
+title: 投影模组教程
 title-en: <EMPTY>
-author: ''
-co-authors: []
+author: xhbsh
+co-authors:
+- 4rcadia
 date: ''
 lastmod: ''
 index: 2
 is-advanced: false
 ---
-
-# #02 投影模组教程
 
 ## 投影模组简要介绍
 

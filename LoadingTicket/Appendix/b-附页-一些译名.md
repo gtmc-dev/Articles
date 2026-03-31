@@ -2,7 +2,7 @@
 slug: glossary
 title: 中英术语表
 title-en: <EMPTY>
-author: ''
+author: 4rcadia
 co-authors: []
 date: ''
 lastmod: ''

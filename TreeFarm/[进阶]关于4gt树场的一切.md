@@ -2,8 +2,10 @@
 slug: 4gt-farms
 title: \[进阶\]关于4gt树场的一切
 title-en: <EMPTY>
-author: ''
-co-authors: []
+author: DreamingGalaxy
+co-authors:
+- 4rcadia
+- BFladderbeanawa
 date: ''
 lastmod: ''
 index: 7
