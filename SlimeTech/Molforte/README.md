@@ -3,7 +3,6 @@ slug: "molforte"
 title: Molforte版
 intro-title: 概述
 index: 0
-is-appendix: false
 ---
 
 ## 本文目标

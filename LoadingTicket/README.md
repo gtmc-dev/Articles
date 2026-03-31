@@ -3,7 +3,6 @@ slug: chunk-loading
 title: <EMPTY>
 intro-title: 序
 index: 0
-is-appendix: false
 ---
 
 ## 概述
