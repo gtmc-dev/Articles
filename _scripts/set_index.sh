@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# THIS IS A ONE-TIME SCRIPT FOR DATA MIGRATION. DO NOT USE IT AGAIN UNLESS YOU KNOW WHAT YOU ARE DOING.
+
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 EXCLUDE_FILES=("CONTRIBUTING.md" "CONTRIBUTING_CN.md" "Preface.md" "_Test Article.md")
 
