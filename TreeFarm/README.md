@@ -1,11 +1,9 @@
 ---
 slug: tree-farm
 title: <EMPTY>
-intro-title: <EMPTY>
+intro-title: 前言
 index: 0
 ---
-
-# 前言
 
 这次在BFladderbean的邀请下，我决定主导写作关于树场的基础性教材与配套习题，以帮助各位了解，使用和设计树场。
 
