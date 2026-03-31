@@ -1,5 +1,5 @@
 ---
-slug: "molforte"
+slug: molforte
 title: Molforte版
 intro-title: 概述
 index: 0

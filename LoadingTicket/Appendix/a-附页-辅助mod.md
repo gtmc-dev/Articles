@@ -1,6 +1,6 @@
 ---
 slug: helper-mods
-title: a-附页-辅助mod
+title: 辅助mod
 author: ''
 co-authors: []
 date: ''
@@ -8,8 +8,6 @@ lastmod: ''
 index: 0
 is-advanced: false
 ---
-
-# a-附页-辅助mod
 
 ## Chunkdebug
 
