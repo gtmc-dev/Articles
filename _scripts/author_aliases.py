@@ -111,19 +111,13 @@ def generate_aliases() -> dict[str, list[str]]:
     display_name_to_canonical: dict[str, str] = {}
     for email, display_names in email_to_display_names.items():
         display_names = list(display_names)
-        if len(display_names) == 1:
-            name = display_names[0]
-            display_name_to_canonical[name] = email_to_github_username.get(
-                email, name)
-        else:
-            github_username = email_to_github_username.get(email)
+        github_username = email_to_github_username.get(email)
+
+        for name in display_names:
             if github_username:
-                for name in display_names:
-                    display_name_to_canonical[name] = github_username
+                display_name_to_canonical[name] = github_username
             else:
-                canonical = display_names[0]
-                for name in display_names:
-                    display_name_to_canonical[name] = canonical
+                display_name_to_canonical[name] = name
 
     canonical_to_display_names: dict[str, set[str]] = {}
     for display_name, canonical in display_name_to_canonical.items():
