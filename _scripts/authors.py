@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
+import json
 import subprocess
 import yaml
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
+ARTICLES_DIR = REPO_ROOT / "articles"
+ALIASES_FILE = SCRIPT_DIR / "authors-alias.json"
 
 EXCLUDE_FILES = {
     "README.md",
@@ -14,6 +17,23 @@ EXCLUDE_FILES = {
     "Preface.md",
     "_Test Article.md",
 }
+
+
+def load_aliases() -> dict[str, str]:
+    if not ALIASES_FILE.exists():
+        return {}
+
+    aliases = json.loads(ALIASES_FILE.read_text(encoding="utf-8"))
+    alias_map = {}
+    for canonical, alias_list in aliases.items():
+        alias_map[canonical] = canonical
+        for alias in alias_list:
+            alias_map[alias] = canonical
+    return alias_map
+
+
+def resolve_author(author: str, alias_map: dict[str, str]) -> str:
+    return alias_map.get(author, author)
 
 
 def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
@@ -101,6 +121,7 @@ def find_markdown_files(root: Path) -> list[Path]:
 
 
 def main():
+    alias_map = load_aliases()
     md_files = find_markdown_files(REPO_ROOT)
     processed = 0
     updated = 0
@@ -109,6 +130,8 @@ def main():
         rel_path = file_path.relative_to(REPO_ROOT)
 
         author, co_authors = get_git_authors(file_path)
+        author = resolve_author(author, alias_map)
+        co_authors = [resolve_author(a, alias_map) for a in co_authors]
         date, lastmod = get_git_dates(file_path)
         if not author:
             print(f"{rel_path}: no git history found")
