@@ -8,6 +8,7 @@ SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 ARTICLES_DIR = REPO_ROOT / "articles"
 ALIASES_FILE = SCRIPT_DIR / "authors_alias.yml"
+MAINTAINERS_FILE = SCRIPT_DIR / "maintainers.yml"
 
 EXCLUDE_FILES = {
     "README.md",
@@ -29,6 +30,12 @@ def load_aliases() -> dict[str, str]:
         for alias in alias_list:
             alias_map[alias] = canonical
     return alias_map
+
+
+def load_maintainers() -> list[str]:
+    if not MAINTAINERS_FILE.exists():
+        return []
+    return yaml.safe_load(MAINTAINERS_FILE.read_text(encoding="utf-8")) or []
 
 
 def resolve_author(author: str, alias_map: dict[str, str]) -> str:
@@ -65,8 +72,10 @@ def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
 
 
 def get_git_dates(file_path: Path) -> tuple[str, str]:
+    maintainers = load_maintainers()
     result = subprocess.run(
-        ["git", "log", "--follow", "--format=%aI", "--", str(file_path)],
+        ["git", "log", "--follow",
+            "--format=%aI%x09%an", "--", str(file_path)],
         capture_output=True,
         text=True,
         cwd=REPO_ROOT,
@@ -75,7 +84,14 @@ def get_git_dates(file_path: Path) -> tuple[str, str]:
     if result.returncode != 0:
         return "", ""
 
-    dates = [d.strip() for d in result.stdout.strip().split("\n") if d.strip()]
+    lines = [l.strip() for l in result.stdout.strip().split("\n") if l.strip()]
+    dates = []
+    for line in lines:
+        if "\t" not in line:
+            continue
+        date, author = line.split("\t", 1)
+        if author not in maintainers:
+            dates.append(date)
     if not dates:
         return "", ""
 
