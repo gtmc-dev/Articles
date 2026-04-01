@@ -7,7 +7,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 ARTICLES_DIR = REPO_ROOT / "articles"
-ALIASES_FILE = SCRIPT_DIR / "authors-alias.yml"
+ALIASES_FILE = SCRIPT_DIR / "authors_alias.yml"
 
 EXCLUDE_FILES = {
     "README.md",
@@ -46,7 +46,8 @@ def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
     if result.returncode != 0:
         return "", []
 
-    authors = [a.strip() for a in result.stdout.strip().split("\n") if a.strip()]
+    authors = [a.strip()
+               for a in result.stdout.strip().split("\n") if a.strip()]
     if not authors:
         return "", []
 
