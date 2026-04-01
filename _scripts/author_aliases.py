@@ -45,7 +45,7 @@ def extract_github_username_from_email(email: str) -> str | None:
 
 def fetch_github_login_from_email(email: str) -> str | None:
     try:
-        url = f"{GITHUB_API_BASE}/search/users?q={email}+in:email"
+        url = f"{GITHUB_API_BASE}/repos/gtmc-dev/articles/commits?author={email}"
         req = urllib.request.Request(
             url,
             headers={
@@ -55,8 +55,8 @@ def fetch_github_login_from_email(email: str) -> str | None:
         )
         with urllib.request.urlopen(req, timeout=10) as response:
             data = json.loads(response.read().decode())
-            if data.get("total_count", 0) > 0:
-                return data["items"][0].get("login")
+            if data:
+                return data[0].get("author", {}).get("login")
     except Exception:
         pass
     return None
