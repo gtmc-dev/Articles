@@ -9,14 +9,66 @@ REPO_ROOT = SCRIPT_DIR.parent
 ARTICLES_DIR = REPO_ROOT / "articles"
 ALIASES_FILE = SCRIPT_DIR / "authors_alias.yml"
 MAINTAINERS_FILE = SCRIPT_DIR / "maintainers.yml"
+ARTICLE_TEMPLATE_FILE = SCRIPT_DIR / "article_meta.tmpl.yml"
+CHAPTER_TEMPLATE_FILE = SCRIPT_DIR / "chapter_meta.tmpl.yml"
 
 EXCLUDE_FILES = {
-    "README.md",
     "CONTRIBUTING.md",
     "CONTRIBUTING_CN.md",
     "Preface.md",
     "_Test Article.md",
 }
+
+BASE_MANAGED_FIELDS = {"author", "co-authors", "date", "lastmod"}
+
+
+def load_template(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+
+
+def get_template_for_file(
+    file_path: Path, article_template: dict, chapter_template: dict
+) -> dict:
+    if file_path.name == "README.md":
+        return chapter_template
+    return article_template
+
+
+def prune_unknown_frontmatter(frontmatter: dict, known_keys: set[str]) -> dict:
+    return {k: v for k, v in frontmatter.items() if k in known_keys}
+
+
+def fill_missing_with_template_defaults(frontmatter: dict, template: dict) -> tuple[dict, dict]:
+    merged = dict(frontmatter)
+    added_defaults = {}
+
+    for key, default_value in template.items():
+        if key not in merged:
+            merged[key] = default_value
+            added_defaults[key] = default_value
+
+    return merged, added_defaults
+
+
+def order_frontmatter_by_template(frontmatter: dict, template: dict) -> dict:
+    ordered = {}
+    for key in template.keys():
+        if key in frontmatter:
+            ordered[key] = frontmatter[key]
+
+    for key, value in frontmatter.items():
+        if key not in ordered:
+            ordered[key] = value
+
+    return ordered
+
+
+def is_frontmatter_ordered_by_template(frontmatter: dict, template: dict) -> bool:
+    expected_order = [key for key in template.keys() if key in frontmatter]
+    remaining_keys = [key for key in frontmatter.keys() if key not in template]
+    return list(frontmatter.keys()) == expected_order + remaining_keys
 
 
 def load_aliases() -> dict[str, str]:
@@ -48,6 +100,7 @@ def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
         capture_output=True,
         text=True,
         cwd=REPO_ROOT,
+        check=False,
     )
 
     if result.returncode != 0:
@@ -79,6 +132,7 @@ def get_git_dates(file_path: Path) -> tuple[str, str]:
         capture_output=True,
         text=True,
         cwd=REPO_ROOT,
+        check=False,
     )
 
     if result.returncode != 0:
@@ -138,6 +192,8 @@ def find_markdown_files(root: Path) -> list[Path]:
 
 def main():
     alias_map = load_aliases()
+    article_template = load_template(ARTICLE_TEMPLATE_FILE)
+    chapter_template = load_template(CHAPTER_TEMPLATE_FILE)
     md_files = find_markdown_files(REPO_ROOT)
     processed = 0
     updated = 0
@@ -145,29 +201,61 @@ def main():
     for file_path in md_files:
         rel_path = file_path.relative_to(REPO_ROOT)
 
-        author, co_authors = get_git_authors(file_path)
-        author = resolve_author(author, alias_map)
-        co_authors = [resolve_author(a, alias_map) for a in co_authors]
-        date, lastmod = get_git_dates(file_path)
-        if not author:
-            print(f"{rel_path}: no git history found")
-            continue
+        template = get_template_for_file(
+            file_path, article_template, chapter_template)
+        known_frontmatter_keys = set(template.keys())
 
         frontmatter, body = read_frontmatter(file_path)
+        cleaned_frontmatter = prune_unknown_frontmatter(
+            frontmatter, known_frontmatter_keys)
+        merged_frontmatter, added_defaults = fill_missing_with_template_defaults(
+            cleaned_frontmatter, template)
+        ordered_frontmatter = order_frontmatter_by_template(
+            merged_frontmatter, template)
 
         changes = {}
-        if frontmatter.get("author") != author:
-            changes["author"] = author
-        if frontmatter.get("co-authors") != co_authors:
-            changes["co-authors"] = co_authors
-        if frontmatter.get("date") != date:
-            changes["date"] = date
-        if frontmatter.get("lastmod") != lastmod:
-            changes["lastmod"] = lastmod
+        required_git_keys = known_frontmatter_keys & BASE_MANAGED_FIELDS
+        computed_values = {}
+
+        if required_git_keys:
+            author, co_authors = get_git_authors(file_path)
+            author = resolve_author(author, alias_map)
+            co_authors = [resolve_author(a, alias_map) for a in co_authors]
+            date, lastmod = get_git_dates(file_path)
+
+            if not author:
+                print(
+                    f"{rel_path}: no git history found, skipping git-managed fields")
+            else:
+                computed_values = {
+                    "author": author,
+                    "co-authors": co_authors,
+                    "date": date,
+                    "lastmod": lastmod,
+                }
+
+        for key in known_frontmatter_keys:
+            if key in computed_values and merged_frontmatter.get(key) != computed_values[key]:
+                changes[key] = computed_values[key]
+
+        if added_defaults:
+            changes["added-defaults"] = sorted(added_defaults.keys())
+
+        unknown_keys = set(frontmatter.keys()) - \
+            set(cleaned_frontmatter.keys())
+        if unknown_keys:
+            changes["removed-unknown"] = sorted(unknown_keys)
+
+        if not is_frontmatter_ordered_by_template(merged_frontmatter, template):
+            changes["reordered"] = True
 
         if changes:
+            frontmatter = ordered_frontmatter
             for key, value in changes.items():
+                if key in {"removed-unknown", "added-defaults", "reordered"}:
+                    continue
                 frontmatter[key] = value
+            frontmatter = order_frontmatter_by_template(frontmatter, template)
             write_frontmatter(file_path, frontmatter, body)
             print(f"{rel_path}: {changes}")
             updated += 1
