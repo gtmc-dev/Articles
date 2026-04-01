@@ -8,7 +8,7 @@ import yaml
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
-MANUAL_ALIASES_FILE = SCRIPT_DIR / "authors_alias_manual.yml"
+MANUAL_ALIASES_FILE = SCRIPT_DIR / "authors_alias_override.yml"
 
 GITHUB_NOREPLY_PATTERN = re.compile(r"\+(\w+)@users\.noreply\.github\.com")
 GITHUB_API_BASE = "https://api.github.com"
