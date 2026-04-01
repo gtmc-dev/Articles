@@ -4,8 +4,8 @@ title: 中英术语表
 title-en: <EMPTY>
 author: Arcadi4
 co-authors: []
-date: '2026-03-30T20:28:54-04:00'
-lastmod: '2026-03-31T07:37:00-04:00'
+date: ''
+lastmod: ''
 index: 1
 is-advanced: false
 ---
