@@ -1,7 +1,7 @@
 ---
 slug: masamod
-chapter-title: 
-chapter-title-en: 
+chapter-title: Masa Mod
+chapter-title-en: Masa Mod
 intro-title: 
 intro-title-en: 
 index: -1
