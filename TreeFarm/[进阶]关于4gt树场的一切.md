@@ -2,7 +2,7 @@
 slug: 4gt-farms
 title: \[进阶\]关于4gt树场的一切
 title-en: <EMPTY>
-author: DreamingGalaxy
+author: jslskd
 co-authors:
 - Arcadi4
 - BFladderbeanawa
