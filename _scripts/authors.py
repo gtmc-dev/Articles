@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import json
 import subprocess
 import yaml
 from pathlib import Path
@@ -8,7 +7,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 ARTICLES_DIR = REPO_ROOT / "articles"
-ALIASES_FILE = SCRIPT_DIR / "authors-alias.json"
+ALIASES_FILE = SCRIPT_DIR / "authors-alias.yml"
 
 EXCLUDE_FILES = {
     "README.md",
@@ -23,7 +22,7 @@ def load_aliases() -> dict[str, str]:
     if not ALIASES_FILE.exists():
         return {}
 
-    aliases = json.loads(ALIASES_FILE.read_text(encoding="utf-8"))
+    aliases = yaml.safe_load(ALIASES_FILE.read_text(encoding="utf-8")) or {}
     alias_map = {}
     for canonical, alias_list in aliases.items():
         alias_map[canonical] = canonical
