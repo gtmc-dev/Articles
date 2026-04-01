@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
+import json
 import re
 import subprocess
+import urllib.error
 import urllib.request
-import json
-import yaml
 from pathlib import Path
+from typing import Optional
+
+import yaml
 
 SCRIPT_DIR = Path(__file__).parent
 MANUAL_ALIASES_FILE = SCRIPT_DIR / "authors_alias_override.yml"
@@ -19,6 +22,7 @@ def get_git_authors() -> list[tuple[str, str]]:
         ["git", "log", "--all", "--format=%an <%ae>"],
         capture_output=True,
         text=True,
+        check=False,
     )
 
     if result.returncode != 0:
@@ -36,16 +40,16 @@ def get_git_authors() -> list[tuple[str, str]]:
     return authors
 
 
-def extract_github_username_from_email(email: str) -> str | None:
+def extract_github_username_from_email(email: str) -> Optional[str]:
     match = GITHUB_NOREPLY_PATTERN.search(email)
     if match:
         return match.group(1)
     return None
 
 
-def fetch_github_login_from_email(email: str) -> str | None:
+def fetch_github_login_from_email(email: str) -> Optional[str]:
     try:
-        url = f"{GITHUB_API_BASE}/repos/gtmc-dev/articles/commits?author={email}"
+        url = f"{GITHUB_API_BASE}/repos/gtmc-dev/articles/commits?author={email}&per_page=1"
         req = urllib.request.Request(
             url,
             headers={
@@ -57,12 +61,12 @@ def fetch_github_login_from_email(email: str) -> str | None:
             data = json.loads(response.read().decode())
             if data:
                 return data[0].get("author", {}).get("login")
-    except Exception:
+    except (urllib.error.URLError, json.JSONDecodeError, TimeoutError):
         pass
     return None
 
 
-def get_github_username_for_email(email: str) -> str | None:
+def get_github_username_for_email(email: str) -> Optional[str]:
     username = extract_github_username_from_email(email)
     if username:
         return username
@@ -102,37 +106,25 @@ def generate_aliases() -> dict[str, list[str]]:
             email_to_display_names[email] = set()
         email_to_display_names[email].add(display_name)
 
-    email_to_github_username: dict[str, str] = {}
-    for email in email_to_display_names:
-        username = get_github_username_for_email(email)
-        if username:
-            email_to_github_username[email] = username
-
-    display_name_to_canonical: dict[str, str] = {}
-    for email, display_names in email_to_display_names.items():
-        display_names = list(display_names)
-        github_username = email_to_github_username.get(email)
-
-        for name in display_names:
-            if github_username:
-                display_name_to_canonical[name] = github_username
-            else:
-                display_name_to_canonical[name] = name
-
-    canonical_to_display_names: dict[str, set[str]] = {}
-    for display_name, canonical in display_name_to_canonical.items():
-        if canonical not in canonical_to_display_names:
-            canonical_to_display_names[canonical] = set()
-        canonical_to_display_names[canonical].add(display_name)
+    github_username_to_emails: dict[str, set[str]] = {}
+    for email in email_to_display_names.keys():
+        github_username = get_github_username_for_email(email)
+        if github_username:
+            if github_username not in github_username_to_emails:
+                github_username_to_emails[github_username] = set()
+            github_username_to_emails[github_username].add(email)
 
     aliases_by_canonical: dict[str, list[str]] = {}
-    for canonical, display_names in canonical_to_display_names.items():
-        if len(display_names) > 1:
-            aliases_by_canonical[canonical] = sorted(
-                d for d in display_names if d != canonical
-            )
+    for github_username, emails in github_username_to_emails.items():
+        display_names = set()
+        for email in emails:
+            display_names.update(email_to_display_names.get(email, []))
+        canonical = github_username
+        aliases = set(display_names) - {canonical}
+        if aliases:
+            aliases_by_canonical[canonical] = sorted(aliases)
 
-    return dict(sorted(aliases_by_canonical.items()))
+    return dict(aliases_by_canonical.items())
 
 
 def main():
