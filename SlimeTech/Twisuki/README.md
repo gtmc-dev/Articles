@@ -1,9 +1,9 @@
 ---
 slug: twisuki
-title: Twisuki版
-title-en: <EMPTY>
+chapter-title: 
+chapter-title-en: 
 intro-title: 序
-intro-title-en: <EMPTY>
+intro-title-en: 
 index: -1
 ---
 

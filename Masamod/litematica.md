@@ -1,7 +1,7 @@
 ---
 slug: litematica
 title: 投影模组教程
-title-en: <EMPTY>
+title-en: 
 author: SDU-Little-River
 co-authors:
 - Arcadi4

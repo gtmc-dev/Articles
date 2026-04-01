@@ -1,8 +1,8 @@
 ---
 slug: village
-title: <EMPTY>
-title-en: <EMPTY>
-intro-title: <EMPTY>
-intro-title-en: <EMPTY>
+chapter-title: 
+chapter-title-en: 
+intro-title: 
+intro-title-en: 
 index: -1
 ---

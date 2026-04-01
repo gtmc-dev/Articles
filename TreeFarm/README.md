@@ -1,9 +1,9 @@
 ---
 slug: tree-farm
-title: <EMPTY>
-title-en: <EMPTY>
+chapter-title: 
+chapter-title-en: 
 intro-title: 前言
-intro-title-en: <EMPTY>
+intro-title-en: 
 index: -1
 ---
 
