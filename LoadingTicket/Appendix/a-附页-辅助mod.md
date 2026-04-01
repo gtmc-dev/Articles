@@ -2,12 +2,12 @@
 slug: helper-mods
 title: 辅助mod
 title-en: <EMPTY>
-author: RoyanAB
+author: Royan
 co-authors:
-  - 4rcadia
-  - Royan
-date: "2025-01-24T19:25:44+08:00"
-lastmod: "2026-03-30T21:39:22-04:00"
+- Arcadi4
+- Royan
+date: '2025-01-24T19:25:44+08:00'
+lastmod: '2026-03-31T07:37:00-04:00'
 index: 2
 is-advanced: false
 ---

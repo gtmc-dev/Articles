@@ -2,10 +2,10 @@
 slug: glossary
 title: 中英术语表
 title-en: <EMPTY>
-author: 4rcadia
+author: Arcadi4
 co-authors: []
-date: "2026-03-30T20:28:54-04:00"
-lastmod: "2026-03-30T21:39:22-04:00"
+date: '2026-03-30T20:28:54-04:00'
+lastmod: '2026-03-31T07:37:00-04:00'
 index: 1
 is-advanced: false
 ---

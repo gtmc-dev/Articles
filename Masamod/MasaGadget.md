@@ -2,11 +2,11 @@
 slug: masa-gadget
 title: Masa Gadget
 title-en: <EMPTY>
-author: xhbsh
+author: SDU-Little-River
 co-authors:
-  - 4rcadia
-date: "2025-01-23T16:21:48+08:00"
-lastmod: "2026-03-30T21:39:22-04:00"
+- Arcadi4
+date: '2025-01-23T16:21:48+08:00'
+lastmod: '2026-03-31T07:37:00-04:00'
 index: 1
 is-advanced: false
 ---

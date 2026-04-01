@@ -2,12 +2,12 @@
 slug: 4gt-farms
 title: \[进阶\]关于4gt树场的一切
 title-en: <EMPTY>
-author: DreamingGalaxy
+author: jslskd
 co-authors:
-  - 4rcadia
-  - BFladderbeanawa
-date: "2025-02-05T17:10:25+08:00"
-lastmod: "2026-03-30T21:39:22-04:00"
+- Arcadi4
+- BFladderbeanawa
+date: '2025-02-05T17:10:25+08:00'
+lastmod: '2026-03-31T07:37:00-04:00'
 index: 7
 is-advanced: false
 ---
