@@ -2,8 +2,8 @@
 slug: micro-timing
 chapter-title: 微时序
 chapter-title-en: Micro Timing
-intro-title: 
-intro-title-en: 
+intro-title:
+intro-title-en:
 index: -1
 ---
 

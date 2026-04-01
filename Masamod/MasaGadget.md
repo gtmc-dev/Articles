@@ -1,12 +1,12 @@
 ---
 slug: masa-gadget
 title: Masa Gadget
-title-en: 
+title-en:
 author: SDU-Little-River
 co-authors:
-- Arcadi4
-date: '2025-01-23T16:21:48+08:00'
-lastmod: '2025-01-23T16:21:48+08:00'
+  - Arcadi4
+date: "2025-01-23T16:21:48+08:00"
+lastmod: "2025-01-23T16:21:48+08:00"
 index: 1
 is-advanced: false
 ---

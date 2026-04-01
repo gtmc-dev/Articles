@@ -1,9 +1,9 @@
 ---
 slug: twisuki
-chapter-title: 
-chapter-title-en: 
+chapter-title:
+chapter-title-en:
 intro-title: 序
-intro-title-en: 
+intro-title-en:
 index: -1
 ---
 

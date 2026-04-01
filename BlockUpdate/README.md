@@ -1,9 +1,9 @@
 ---
 slug: block-update
-chapter-title: 
-chapter-title-en: 
+chapter-title:
+chapter-title-en:
 intro-title: 引言
-intro-title-en: 
+intro-title-en:
 index: -1
 ---
 

@@ -1,13 +1,13 @@
 ---
 slug: 4gt-farms
 title: \[进阶\]关于4gt树场的一切
-title-en: 
+title-en:
 author: jslskd
 co-authors:
-- Arcadi4
-- BFladderbeanawa
-date: '2025-02-05T17:10:25+08:00'
-lastmod: '2025-08-02T00:31:49+08:00'
+  - Arcadi4
+  - BFladderbeanawa
+date: "2025-02-05T17:10:25+08:00"
+lastmod: "2025-08-02T00:31:49+08:00"
 index: 7
 is-advanced: false
 ---

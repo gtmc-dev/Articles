@@ -1,11 +1,13 @@
 ---
-slug: 
-chapter-title: 
-chapter-title-en: 
-intro-title: 
-intro-title-en: 
+slug:
+chapter-title:
+chapter-title-en:
+intro-title:
+intro-title-en:
 index: -1
----# Articles
+---
+
+# Articles
 
 Article storage for [_Gradutate Texts in Technical Minecraft_](https://beta.techmc.wiki).
 

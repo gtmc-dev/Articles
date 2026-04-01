@@ -1,8 +1,8 @@
 ---
-slug: 
-chapter-title: 
-chapter-title-en: 
-intro-title: 
-intro-title-en: 
+slug:
+chapter-title:
+chapter-title-en:
+intro-title:
+intro-title-en:
 index: -1
 ---

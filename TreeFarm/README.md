@@ -3,7 +3,7 @@ slug: tree-farm
 chapter-title: 树场
 chapter-title-en: Tree Farm
 intro-title: 前言
-intro-title-en: 
+intro-title-en:
 index: -1
 ---
 
