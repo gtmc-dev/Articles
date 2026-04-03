@@ -4,10 +4,9 @@ title: 辅助mod
 title-en: Helper Mods
 author: RoyanAB
 co-authors:
-  - Arcadi4
-  - RoyanAB
-date: "2025-01-24T19:25:44+08:00"
-lastmod: "2025-02-11T16:54:10+08:00"
+- Arcadi4
+date: '2025-01-24T19:25:44+08:00'
+lastmod: '2025-02-11T16:54:10+08:00'
 index: 2
 is-advanced: false
 ---

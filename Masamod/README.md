@@ -15,5 +15,5 @@ index: -1
 
 ## 目录
 
-- [#01](../Masamod/01-MasaGadget.md) Masa Gadget
-- [#01](../Masamod/02-litematica) litematica
+- [#01](../Masamod/MasaGadget.md) Masa Gadget
+- [#01](../Masamod/litematica) litematica
