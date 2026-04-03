@@ -40,7 +40,9 @@ def prune_unknown_frontmatter(frontmatter: dict, known_keys: set[str]) -> dict:
     return {k: v for k, v in frontmatter.items() if k in known_keys}
 
 
-def fill_missing_with_template_defaults(frontmatter: dict, template: dict) -> tuple[dict, dict]:
+def fill_missing_with_template_defaults(
+    frontmatter: dict, template: dict
+) -> tuple[dict, dict]:
     merged = dict(frontmatter)
     added_defaults = {}
 
@@ -94,7 +96,9 @@ def resolve_author(author: str, alias_map: dict[str, str]) -> str:
     return alias_map.get(author, author)
 
 
-def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
+def get_git_authors(
+    file_path: Path, alias_map: dict[str, str]
+) -> tuple[str, list[str]]:
     result = subprocess.run(
         ["git", "log", "--follow", "--format=%an", "--", str(file_path)],
         capture_output=True,
@@ -106,11 +110,11 @@ def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
     if result.returncode != 0:
         return "", []
 
-    authors = [a.strip()
-               for a in result.stdout.strip().split("\n") if a.strip()]
+    authors = [a.strip() for a in result.stdout.strip().split("\n") if a.strip()]
     if not authors:
         return "", []
 
+    # First get unique authors by raw name
     seen = set()
     unique_authors = []
     for author in authors:
@@ -118,8 +122,20 @@ def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
             seen.add(author)
             unique_authors.append(author)
 
-    first_author = unique_authors[-1]
-    co_authors = [a for a in unique_authors if a != first_author]
+    # Resolve aliases FIRST, then deduplicate again
+    resolved_authors = [resolve_author(a, alias_map) for a in unique_authors]
+
+    # Deduplicate by resolved names to avoid duplicates like "tanhHeng" + "tanh丶桁" -> "tanhHeng" + "tanhHeng"
+    seen_resolved = set()
+    unique_resolved = []
+    for author in resolved_authors:
+        if author not in seen_resolved:
+            seen_resolved.add(author)
+            unique_resolved.append(author)
+
+    # unique_resolved is ordered oldest->newest (git log shows newest first, we reversed via [-1])
+    first_author = unique_resolved[-1]
+    co_authors = [a for a in unique_resolved if a != first_author]
 
     return first_author, co_authors
 
@@ -127,8 +143,7 @@ def get_git_authors(file_path: Path) -> tuple[str, list[str]]:
 def get_git_dates(file_path: Path) -> tuple[str, str]:
     maintainers = load_maintainers()
     result = subprocess.run(
-        ["git", "log", "--follow",
-            "--format=%aI%x09%an", "--", str(file_path)],
+        ["git", "log", "--follow", "--format=%aI%x09%an", "--", str(file_path)],
         capture_output=True,
         text=True,
         cwd=REPO_ROOT,
@@ -201,31 +216,30 @@ def main():
     for file_path in md_files:
         rel_path = file_path.relative_to(REPO_ROOT)
 
-        template = get_template_for_file(
-            file_path, article_template, chapter_template)
+        template = get_template_for_file(file_path, article_template, chapter_template)
         known_frontmatter_keys = set(template.keys())
 
         frontmatter, body = read_frontmatter(file_path)
         cleaned_frontmatter = prune_unknown_frontmatter(
-            frontmatter, known_frontmatter_keys)
+            frontmatter, known_frontmatter_keys
+        )
         merged_frontmatter, added_defaults = fill_missing_with_template_defaults(
-            cleaned_frontmatter, template)
+            cleaned_frontmatter, template
+        )
         ordered_frontmatter = order_frontmatter_by_template(
-            merged_frontmatter, template)
+            merged_frontmatter, template
+        )
 
         changes = {}
         required_git_keys = known_frontmatter_keys & BASE_MANAGED_FIELDS
         computed_values = {}
 
         if required_git_keys:
-            author, co_authors = get_git_authors(file_path)
-            author = resolve_author(author, alias_map)
-            co_authors = [resolve_author(a, alias_map) for a in co_authors]
+            author, co_authors = get_git_authors(file_path, alias_map)
             date, lastmod = get_git_dates(file_path)
 
             if not author:
-                print(
-                    f"{rel_path}: no git history found, skipping git-managed fields")
+                print(f"{rel_path}: no git history found, skipping git-managed fields")
             else:
                 computed_values = {
                     "author": author,
@@ -235,14 +249,16 @@ def main():
                 }
 
         for key in known_frontmatter_keys:
-            if key in computed_values and merged_frontmatter.get(key) != computed_values[key]:
+            if (
+                key in computed_values
+                and merged_frontmatter.get(key) != computed_values[key]
+            ):
                 changes[key] = computed_values[key]
 
         if added_defaults:
             changes["added-defaults"] = sorted(added_defaults.keys())
 
-        unknown_keys = set(frontmatter.keys()) - \
-            set(cleaned_frontmatter.keys())
+        unknown_keys = set(frontmatter.keys()) - set(cleaned_frontmatter.keys())
         if unknown_keys:
             changes["removed-unknown"] = sorted(unknown_keys)
 
