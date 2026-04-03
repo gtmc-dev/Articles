@@ -97,7 +97,7 @@ def resolve_author(author: str, alias_map: dict[str, str]) -> str:
 
 
 def get_git_authors(
-    file_path: Path, alias_map: dict[str, str]
+    file_path: Path, alias_map: dict[str, str], maintainers: list[str] | None = None
 ) -> tuple[str, list[str]]:
     result = subprocess.run(
         ["git", "log", "--follow", "--format=%an", "--", str(file_path)],
@@ -113,6 +113,9 @@ def get_git_authors(
     authors = [a.strip() for a in result.stdout.strip().split("\n") if a.strip()]
     if not authors:
         return "", []
+
+    if maintainers is None:
+        maintainers = load_maintainers()
 
     # First get unique authors by raw name
     seen = set()
@@ -133,9 +136,17 @@ def get_git_authors(
             seen_resolved.add(author)
             unique_resolved.append(author)
 
-    # unique_resolved is ordered oldest->newest (git log shows newest first, we reversed via [-1])
-    first_author = unique_resolved[-1]
-    co_authors = [a for a in unique_resolved if a != first_author]
+    # Filter out maintainers - they should not count as article authors
+    non_maintainers = [a for a in unique_resolved if a not in maintainers]
+
+    if non_maintainers:
+        # Use non-maintainer as author, rest as co-authors
+        first_author = non_maintainers[-1]
+        co_authors = [a for a in non_maintainers if a != first_author]
+    else:
+        # Fallback: all commits are from maintainers, use first maintainer as author
+        first_author = unique_resolved[-1]
+        co_authors = []
 
     return first_author, co_authors
 
@@ -155,13 +166,18 @@ def get_git_dates(file_path: Path) -> tuple[str, str]:
 
     lines = [l.strip() for l in result.stdout.strip().split("\n") if l.strip()]
     dates = []
+    all_dates = []
     for line in lines:
         if "\t" not in line:
             continue
         date, author = line.split("\t", 1)
+        all_dates.append(date)
         if author not in maintainers:
             dates.append(date)
+
     if not dates:
+        if all_dates:
+            return all_dates[-1], all_dates[0]
         return "", ""
 
     return dates[-1], dates[0]
