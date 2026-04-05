@@ -9,6 +9,9 @@ date: '2025-01-24T19:25:44+08:00'
 lastmod: '2025-02-11T16:54:10+08:00'
 index: 2
 is-advanced: false
+banner:
+  src: img/banner.png
+  alt: Graduate Text in Minecraft
 ---
 
 ## Chunkdebug

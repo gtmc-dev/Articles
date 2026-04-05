@@ -1,14 +1,17 @@
 ---
 slug: masa-gadget
 title: Masa Gadget
-title-en:
+title-en: null
 author: SDU-Little-River
 co-authors:
-  - Arcadi4
-date: "2025-01-23T16:21:48+08:00"
-lastmod: "2025-01-23T16:21:48+08:00"
+- Arcadi4
+date: '2025-01-23T16:21:48+08:00'
+lastmod: '2025-01-23T16:21:48+08:00'
 index: 1
 is-advanced: false
+banner:
+  src: img/banner.png
+  alt: Graduate Text in Minecraft
 ---
 
 Masa Gadget为各个masamod添加了一些额外的功能，同时本身也提供了村民信息渲染，搜寻可刷怪位置等额外功能

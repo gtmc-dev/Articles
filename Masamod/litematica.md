@@ -1,14 +1,17 @@
 ---
 slug: litematica
 title: 投影模组教程
-title-en:
+title-en: null
 author: SDU-Little-River
 co-authors:
-  - Arcadi4
-date: "2025-01-23T11:50:01+08:00"
-lastmod: "2025-01-23T16:21:48+08:00"
+- Arcadi4
+date: '2025-01-23T11:50:01+08:00'
+lastmod: '2025-01-23T16:21:48+08:00'
 index: 2
 is-advanced: false
+banner:
+  src: img/banner.png
+  alt: Graduate Text in Minecraft
 ---
 
 ## 投影模组简要介绍
