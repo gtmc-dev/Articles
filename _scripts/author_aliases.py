@@ -23,6 +23,7 @@ def get_git_authors() -> list[tuple[str, str]]:
         capture_output=True,
         text=True,
         check=False,
+        encoding="utf-8",
     )
 
     if result.returncode != 0:
