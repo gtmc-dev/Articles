@@ -10,16 +10,14 @@ lastmod: '2025-02-11T16:54:10+08:00'
 index: 2
 is-advanced: false
 banner:
-  src: img/banner.png
-  alt: Graduate Text in Minecraft
+  src: ./img/chunkdebug.png
+  alt: 演示
 ---
-
 ## Chunkdebug
 
 链接:[Modrinth](https://modrinth.com/mod/chunk-debug)
 
 一款可以查看服务器上个个地方区块加载情况。
-![演示](./img/chunkdebug.png)
 
 ## Intricarpet
 
