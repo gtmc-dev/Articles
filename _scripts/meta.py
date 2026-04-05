@@ -105,6 +105,7 @@ def get_git_authors(
         text=True,
         cwd=REPO_ROOT,
         check=False,
+        encoding="utf-8",
     )
 
     if result.returncode != 0:
@@ -159,6 +160,7 @@ def get_git_dates(file_path: Path) -> tuple[str, str]:
         text=True,
         cwd=REPO_ROOT,
         check=False,
+        encoding="utf-8",
     )
 
     if result.returncode != 0:
