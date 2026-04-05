@@ -4,10 +4,13 @@ title: 中英术语表
 title-en: Glossary
 author: Arcadi4
 co-authors: []
-date: ''
-lastmod: ''
+date: '2026-03-30T20:28:54-04:00'
+lastmod: '2026-04-03T00:32:38-04:00'
 index: 1
 is-advanced: false
+banner:
+  src: img/banner.png
+  alt: Graduate Text in Minecraft
 ---
 
 一些跟本文有关的译名，大部分取自于wiki。
