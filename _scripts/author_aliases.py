@@ -135,7 +135,12 @@ def main():
 
     with open(SCRIPT_DIR / "authors_alias.yml", "w", encoding="utf-8") as f:
         yaml.dump(
-            aliases, f, allow_unicode=True, default_flow_style=False, sort_keys=False
+            aliases,
+            f,
+            allow_unicode=True,
+            default_flow_style=False,
+            sort_keys=False,
+            indent=2,
         )
 
     print(f"Generated authors_alias.yml with {len(aliases)} canonical authors")

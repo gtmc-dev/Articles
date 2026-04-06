@@ -204,7 +204,11 @@ def read_frontmatter(file_path: Path) -> tuple[dict, str]:
 
 def write_frontmatter(file_path: Path, frontmatter: dict, body: str):
     frontmatter_str = yaml.dump(
-        frontmatter, allow_unicode=True, default_flow_style=False, sort_keys=False
+        frontmatter,
+        allow_unicode=True,
+        default_flow_style=False,
+        sort_keys=False,
+        indent=2,
     )
     new_content = f"---\n{frontmatter_str}---{body}"
     with open(file_path, "w", encoding="utf-8") as f:
