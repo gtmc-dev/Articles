@@ -24,6 +24,14 @@ Simply clone this repo, stay updated by pulling the latest changes, and submit a
 - It meets our quality standards
 - All conflicts are resolved
 
+## Copyright and License
+
+All articles in this repository are distributed under [CC BY-NC-SA 4.0](LICENSE). By submitting an article or revision, you confirm that the material is your original work or that you have permission to contribute it under that license.
+
+You keep the copyright to your own contribution. By opening a submission PR or asking reviewers to merge your changes, you agree that the accepted article content may be published, shared, and adapted under CC BY-NC-SA 4.0 on an irrevocable basis, so long as downstream users follow the license terms.
+
+Please do not submit text, diagrams, screenshots, or other media that you cannot license under CC BY-NC-SA 4.0. Contributor credit is normally preserved through article front matter, pull request records, and repository history, which together act as the project's practical attribution trail.
+
 ## About Article Slugs
 
 A slug is the identifier displayed in the URL of an article. For example, the file path `TreeFarm/01-前置知识与树场的基本结构.md` corresponds to the URL `techmc.wiki/articles/tree-farm/basics`. This is defined by the `slug` field in the Front Matter at the top of each article. Please ensure that each article has a unique and descriptive slug so readers can easily understand the content from the URL.
