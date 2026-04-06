@@ -210,7 +210,7 @@ def write_frontmatter(file_path: Path, frontmatter: dict, body: str):
         sort_keys=False,
         indent=2,
     )
-    new_content = f"---\n{frontmatter_str}---{body}"
+    new_content = f"---\n{frontmatter_str}---\n{body}"
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(new_content)
 
