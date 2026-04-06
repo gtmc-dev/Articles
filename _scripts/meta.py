@@ -100,7 +100,14 @@ def get_git_authors(
     file_path: Path, alias_map: dict[str, str], maintainers: list[str] | None = None
 ) -> tuple[str, list[str]]:
     result = subprocess.run(
-        ["git", "log", "--follow", "--format=%an", "--", str(file_path)],
+        [
+            "git",
+            "log",
+            "--follow",
+            "--format=%an%x00%cn%x00%B%x00---COMMIT---",
+            "--",
+            str(file_path),
+        ],
         capture_output=True,
         text=True,
         cwd=REPO_ROOT,
@@ -111,45 +118,133 @@ def get_git_authors(
     if result.returncode != 0:
         return "", []
 
-    authors = [a.strip() for a in result.stdout.strip().split("\n") if a.strip()]
-    if not authors:
-        return "", []
-
     if maintainers is None:
         maintainers = load_maintainers()
 
-    # First get unique authors by raw name
-    seen = set()
-    unique_authors = []
-    for author in authors:
-        if author not in seen:
-            seen.add(author)
-            unique_authors.append(author)
+    # 用 ---COMMIT--- 分隔符拆分每个 commit
+    commit_blocks = result.stdout.strip().split("---COMMIT---")
 
-    # Resolve aliases FIRST, then deduplicate again
-    resolved_authors = [resolve_author(a, alias_map) for a in unique_authors]
+    commits = []
+    for block in commit_blocks:
+        block = block.strip()
+        if not block:
+            continue
+        parts = block.split("\x00", 2)
+        if len(parts) < 3:
+            continue
 
-    # Deduplicate by resolved names to avoid duplicates like "tanhHeng" + "tanh丶桁" -> "tanhHeng" + "tanhHeng"
-    seen_resolved = set()
-    unique_resolved = []
-    for author in resolved_authors:
-        if author not in seen_resolved:
-            seen_resolved.add(author)
-            unique_resolved.append(author)
+        author = parts[0].strip()
+        committer = parts[1].strip()
+        body = parts[2].strip()
 
-    # Filter out maintainers - they should not count as article authors
-    non_maintainers = [a for a in unique_resolved if a not in maintainers]
-
-    if non_maintainers:
-        # Use non-maintainer as author, rest as co-authors
-        first_author = non_maintainers[-1]
-        co_authors = [a for a in non_maintainers if a != first_author]
-    else:
-        # Fallback: all commits are from maintainers, use first maintainer as author
-        first_author = unique_resolved[-1]
+        # 提取 co-authors
         co_authors = []
+        for body_line in body.split("\n"):
+            if body_line.strip().startswith("Co-authored-by:"):
+                co_author_raw = body_line.replace("Co-authored-by:", "").strip()
+                if "<" in co_author_raw:
+                    co_author_raw = co_author_raw.rsplit("<", 1)[0].strip()
+                if co_author_raw:
+                    co_authors.append(co_author_raw)
 
-    return first_author, co_authors
+        commits.append(
+            {
+                "author": author,
+                "committer": committer,
+                "co_authors": co_authors,
+            }
+        )
+
+    if not commits:
+        return "", []
+
+    # 只收集 co-authored-by 中的真实贡献者，不收集 committer
+    all_coauthors_set = set()
+    for commit in commits:
+        for coauthor in commit["co_authors"]:
+            all_coauthors_set.add(coauthor)
+
+    # 将 maintainers 转为小写集合用于比较（case-insensitive）
+    maintainers_lower = {m.lower() for m in maintainers}
+
+    # 检查 name 是否是 maintainer（case-insensitive）
+    def is_maintainer(name: str) -> bool:
+        return name.lower() in maintainers_lower
+
+    # Resolve aliases
+    alias_map_loaded = alias_map if alias_map else load_aliases()
+
+    def resolve(name: str) -> str:
+        return alias_map_loaded.get(name, name)
+
+    first_commit = commits[-1]
+    first_author_raw = first_commit["author"]
+    first_author = resolve(first_author_raw)
+
+    unique_authors_raw = []
+    seen = set()
+    for commit in commits:
+        if commit["author"] not in seen:
+            seen.add(commit["author"])
+            unique_authors_raw.append(commit["author"])
+
+    seen_resolved = set()
+    unique_authors = []
+    for author_raw in unique_authors_raw:
+        resolved = resolve(author_raw)
+        if resolved not in seen_resolved:
+            seen_resolved.add(resolved)
+            unique_authors.append(resolved)
+
+    all_coauthors_resolved = []
+    seen_coauthors = set()
+    for coauthor_raw in all_coauthors_set:
+        resolved = resolve(coauthor_raw)
+        if resolved not in seen_coauthors:
+            seen_coauthors.add(resolved)
+            all_coauthors_resolved.append(resolved)
+
+    non_maintainers = [a for a in unique_authors if not is_maintainer(a)]
+    non_maintainer_coauthors = [
+        a for a in all_coauthors_resolved if not is_maintainer(a)
+    ]
+
+    if is_maintainer(first_author):
+        if all_coauthors_resolved:
+            first_author_new = all_coauthors_resolved[-1]
+            co_authors_list = [
+                a for a in all_coauthors_resolved if a != first_author_new
+            ]
+            for a in non_maintainers:
+                if a != first_author_new and a not in co_authors_list:
+                    co_authors_list.append(a)
+            return first_author_new, co_authors_list
+        else:
+            if non_maintainers:
+                first_author_new = non_maintainers[0]
+                co_authors_list = [a for a in non_maintainers if a != first_author_new]
+            else:
+                first_author_new = unique_authors[-1] if unique_authors else ""
+                co_authors_list = []
+            return first_author_new, co_authors_list
+    else:
+        if non_maintainers:
+            first_author_new = non_maintainers[-1]
+            co_authors_list = [a for a in non_maintainers if a != first_author_new]
+            for a in non_maintainer_coauthors:
+                if a not in co_authors_list:
+                    co_authors_list.append(a)
+            return first_author_new, co_authors_list
+        else:
+            if non_maintainer_coauthors:
+                first_author_new = non_maintainer_coauthors[-1]
+                co_authors_list = [
+                    a for a in non_maintainer_coauthors if a != first_author_new
+                ]
+                return first_author_new, co_authors_list
+            else:
+                first_author_new = unique_authors[-1] if unique_authors else ""
+                return first_author_new, []
 
 
 def get_git_dates(file_path: Path) -> tuple[str, str]:
@@ -162,6 +257,44 @@ def get_git_dates(file_path: Path) -> tuple[str, str]:
         check=False,
         encoding="utf-8",
     )
+
+    if result.returncode != 0:
+        return "", ""
+
+    if maintainers is None:
+        maintainers = load_maintainers()
+
+    commit_blocks = result.stdout.strip().split("---COMMIT---")
+
+    commits = []
+    for block in commit_blocks:
+        block = block.strip()
+        if not block:
+            continue
+        parts = block.split("\x00", 2)
+        if len(parts) < 3:
+            continue
+
+        author = parts[0].strip()
+        committer = parts[1].strip()
+        body = parts[2].strip()
+
+        co_authors = []
+        for body_line in body.split("\n"):
+            if body_line.strip().startswith("Co-authored-by:"):
+                co_author_raw = body_line.replace("Co-authored-by:", "").strip()
+                if "<" in co_author_raw:
+                    co_author_raw = co_author_raw.rsplit("<", 1)[0].strip()
+                if co_author_raw:
+                    co_authors.append(co_author_raw)
+
+        commits.append(
+            {
+                "author": author,
+                "committer": committer,
+                "co_authors": co_authors,
+            }
+        )
 
     if result.returncode != 0:
         return "", ""
@@ -194,6 +327,8 @@ def read_frontmatter(file_path: Path) -> tuple[dict, str]:
         if len(parts) >= 3:
             frontmatter_str = parts[1]
             body = parts[2]
+            body = body.lstrip()
+            body = "\n" + body if body else ""
             try:
                 frontmatter = yaml.safe_load(frontmatter_str) or {}
             except yaml.YAMLError:
@@ -209,8 +344,8 @@ def write_frontmatter(file_path: Path, frontmatter: dict, body: str):
         default_flow_style=False,
         sort_keys=False,
         indent=2,
-        explicit_start=True,
-        explicit_end=True,
+        explicit_start=False,
+        explicit_end=False,
     )
     new_content = f"---\n{frontmatter_str}---\n{body}"
     with open(file_path, "w", encoding="utf-8") as f:
