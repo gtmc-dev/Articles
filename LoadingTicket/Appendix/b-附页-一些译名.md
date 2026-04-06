@@ -3,9 +3,10 @@ slug: glossary
 title: 中英术语表
 title-en: Glossary
 author: Arcadi4
-co-authors: []
-date: '2026-03-30T20:28:54-04:00'
-lastmod: '2026-04-03T00:32:38-04:00'
+co-authors:
+- BFladderbeanawa
+date: '2026-04-05T22:16:03+08:00'
+lastmod: '2026-04-05T22:16:03+08:00'
 index: 1
 is-advanced: false
 banner:
