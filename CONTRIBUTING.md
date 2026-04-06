@@ -66,6 +66,45 @@ It is allowed to omit subsection slugs (i.e., explicitly set `slug: ""`). If a s
 
 For example, if the slug in `Twisuki/README.md` is empty, then the URL for `Twisuki/01-article.md` will be `/articles/article` instead of `/articles/twisuki/article`.
 
+## Custom Markdown Syntax
+
+We provide a few custom Markdown enhancements to make technical writing more expressive and engaging. You can use these special tags directly in your articles.
+
+### Colored Text
+
+If you need to highlight specific terms or values with colors, use the ANSI color syntax. It works by wrapping your text in brackets with the color name:
+
+```markdown
+This is a [red]very important[/red] warning.
+You can also use [bright-blue]brighter colors[/bright-blue].
+```
+
+**Supported Colors:**
+- Standard: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`
+- Bright variants: `bright-black` (gray), `bright-red`, `bright-green`, `bright-yellow`, `bright-blue`, `bright-magenta`, `bright-cyan`, `bright-white`
+
+*Note: Please use colors sparingly so they don't distract the readers.*
+
+### Advanced Content Sections
+
+Sometimes an article contains deep-dive technical details that might overwhelm beginners. You can mark an entire section as "Advanced" by simply adding `[!ADVANCED]` to the end of your heading:
+
+```markdown
+## How the RNG Manipulation Works [!ADVANCED]
+
+This section will be hidden by default behind a toggle...
+```
+
+When rendered, this heading will get a special "Advanced" badge, and the content under it will be collapsed by default. Readers can click to expand it if they want to dig deeper.
+
+### Hidden Text (Spoiler / Scratchcard)
+
+If you want to hide a quick spoiler, a pop quiz answer, or an easter egg, use the `<hidden>` tag. The text will be blacked out (like a scratchcard) and will only reveal itself when the reader hovers their mouse over it:
+
+```html
+The answer to the puzzle is <hidden>42</hidden>.
+```
+
 ## Git Standards
 
 We don't want to require any `git` knowledge for contributors. However, to preserve traceability and transparency of the editting history, we still have to enforce some standards on commits.
