@@ -4,8 +4,8 @@ title: 投影模组教程
 title-en: null
 author: SDU-Little-River
 co-authors:
-- BFladderbeanawa
 - Arcadi4
+- BFladderbeanawa
 date: '2025-01-23T11:50:01+08:00'
 lastmod: '2026-04-05T22:16:41+08:00'
 index: 2
@@ -14,6 +14,7 @@ banner:
   src: https://www.xhbsh.top/img/mod/litematica/img.png
   alt: ''
 ---
+
 ## 投影模组简要介绍
 
 默认情况下,投影主菜单的快捷键位是M,打开后即可进入投影的主菜单

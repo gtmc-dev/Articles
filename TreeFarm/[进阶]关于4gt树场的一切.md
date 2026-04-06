@@ -4,8 +4,8 @@ title: 关于4gt树场的一切
 title-en: null
 author: jslskd
 co-authors:
-- BFladderbeanawa
 - Arcadi4
+- BFladderbeanawa
 date: '2025-02-05T17:10:25+08:00'
 lastmod: '2026-04-05T22:16:03+08:00'
 index: 7
@@ -14,6 +14,7 @@ banner:
   src: img/banner.png
   alt: Graduate Text in Minecraft
 ---
+
 
 # [!ADVANCED] 关于4gt树场的一切
 

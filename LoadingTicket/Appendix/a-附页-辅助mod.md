@@ -4,8 +4,8 @@ title: 辅助mod
 title-en: Helper Mods
 author: RoyanAB
 co-authors:
-- BFladderbeanawa
 - Arcadi4
+- BFladderbeanawa
 date: '2025-01-24T19:25:44+08:00'
 lastmod: '2026-04-05T22:16:41+08:00'
 index: 2
@@ -14,6 +14,7 @@ banner:
   src: ./img/chunkdebug.png
   alt: 演示
 ---
+
 ## Chunkdebug
 
 链接:[Modrinth](https://modrinth.com/mod/chunk-debug)

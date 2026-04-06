@@ -2,9 +2,9 @@
 slug: glossary
 title: 中英术语表
 title-en: Glossary
-author: Arcadi4
+author: BFladderbeanawa
 co-authors:
-- BFladderbeanawa
+- Arcadi4
 date: '2026-04-05T22:16:03+08:00'
 lastmod: '2026-04-05T22:16:03+08:00'
 index: 1
@@ -13,6 +13,7 @@ banner:
   src: img/banner.png
   alt: Graduate Text in Minecraft
 ---
+
 
 一些跟本文有关的译名，大部分取自于wiki。
 
