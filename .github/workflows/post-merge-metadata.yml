@@ -1,0 +1,17 @@
+name: Update Article Metadata
+on:
+  push:
+    branches: [main]
+jobs:
+  update-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python _scripts/author_aliases.py
+      - run: python _scripts/meta.py
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update article metadata"
