@@ -2,85 +2,113 @@
 
 [中文版](CONTRIBUTING_CN.md)
 
-## Structure of Administration
+## What is this repository?
 
-This project adopts a flat organizational structure. The only two roles are reviewers (admins) and writers (users). Reviewers are rotating among the internal writer team. Other from that, there are no differences between an outside contributor and a writer.
+This repository securely stores all the article content for the Graduate Texts in Minecraft project. Submissions and revisions of articles are processed here.
 
-## Rotating Reviewers
+## Administration & Roles
 
-Reviewers will be rotating among the writer team.
+This project adopts a flat organizational structure. There are only two roles: reviewers (admins) and writers (users).
+Reviewers rotate among the internal writer team. There is no hierarchical difference between an outside contributor and a writer.
 
 Reviewers are responsible for:
 
 - Enforcing writing standards
 - Fact checks
-- Resolving conflicts on merge requests
-- Approving merge requests
+- Resolving conflicts on pull requests
+- Approving pull requests (PRs)
 
-## Contributing
+## Submission Workflow
 
-Simply clone this repo, stay updated by pulling the latest changes, and submit a merge request with your article. The reviewers will review your article and merge it if:
+Submitting an article is straightforward:
 
-- It meets our quality standards
-- All conflicts are resolved
+1. Submit via the website or GitHub to request a review. You can operate directly on the website, or edit locally and push to GitHub.
+2. Fill out the frontmatter (the metadata block) at the top of your markdown file.
+3. Write your article using standard Markdown alongside our supported custom syntax (see below).
+4. Submit a Pull Request (PR) through the website or GitHub to request a review.
 
-## Copyright and License
+## Frontmatter Guide
 
-All articles in this repository are distributed under [CC BY-NC-SA 4.0](LICENSE). By submitting an article or revision, you confirm that the material is your original work or that you have permission to contribute it under that license.
+Every Markdown file requires a YAML frontmatter block at the very top of the file to track its metadata.
 
-You keep the copyright to your own contribution. By opening a submission PR or asking reviewers to merge your changes, you agree that the accepted article content may be published, shared, and adapted under CC BY-NC-SA 4.0 on an irrevocable basis, so long as downstream users follow the license terms.
+Here is an article metadata example:
 
-Please do not submit text, diagrams, screenshots, or other media that you cannot license under CC BY-NC-SA 4.0. Contributor credit is normally preserved through article front matter, pull request records, and repository history, which together act as the project's practical attribution trail.
-
-## About Article Slugs
-
-A slug is the identifier displayed in the URL of an article. For example, the file path `TreeFarm/01-前置知识与树场的基本结构.md` corresponds to the URL `techmc.wiki/articles/tree-farm/basics`. This is defined by the `slug` field in the Front Matter at the top of each article. Please ensure that each article has a unique and descriptive slug so readers can easily understand the content from the URL.
-
-Reviewers will also check the correctness of slugs when reviewing merge requests.
-
-### How to Add a Slug
-
-If you are using the web editor, there will be an input box at the top of the page for you to enter the slug. Please read the following specifications to ensure your slug meets the requirements.
-
-If you are editing in a local editor, add YAML frontmatter at the top of your Markdown file:
-
-```markdown
+```yaml
 ---
-slug: "your-slug-here"
+slug: basics-and-structure
+title: 前置知识与树场的基本结构
+title-en: Basics and Structure
+author: YourGitHubName
+co-authors:
+  - Contributor1
+  - Contributor2
+date: '2025-02-02T23:57:52+08:00'
+lastmod: '2025-07-28T21:48:28+08:00'
+index: 1
+is-advanced: false
+banner:
+  src: img/banner.png
+  alt: A descriptive alt text
 ---
-
-# Article Title
-
-Content...
 ```
 
-### Slug Requirements
+Field breakdown:
 
-A slug must follow these rules:
+- `title`: The primary title of the article.
+- `title-en`: The English translation of the title. (Highly recommended for discoverability)
+- `author`: The primary author's GitHub username. *Does not need manual updating.*
+- `co-authors`: A YAML array of additional contributors' usernames. *Does not need manual updating.*
+- `date`: The original publication or creation date in ISO 8601 format. *Does not need manual updating.*
+- `lastmod`: The date of the most recent significant update in ISO 8601 format. *Does not need manual updating.*
+- `index`: An integer representing the order of the article in its directory. `-1` means unordered, please do not submit articles with `index: -1`.
+- `slug`: The unique URL identifier for the article.
+- `is-advanced`: Set to `true` to mark the *entire* article as advanced content.
+- `banner`: A nested object containing `src` (relative image path) and `alt` (accessible description of the image).
 
-- Only lowercase letters (a–z), numbers (0–9), and hyphens (`-`) are allowed.
-- Uppercase letters, underscores, spaces, special characters, Chinese characters, or any other characters are not allowed.
-- Do not include chapter numbers in the slug. For example, `01-title` is not appropriate; use `title` instead.
+Here is a chapter/directory (`README.md`) metadata example:
 
-### Slugs for Sections / Directories
+```yaml
+---
+slug: tree-farm
+chapter-title: 树场
+chapter-title-en: Tree Farm
+intro-title: 前言
+intro-title-en: Preface
+index: -1
+---
+```
 
-Each top-level directory must contain a `README.md` file, and the slug for that directory should be defined within it using the same format as above.
+Field breakdown:
 
-Note: The repository must not exceed three levels of directory depth.
+- `chapter-title`: The display name for the chapter/directory.
+- `chapter-title-en`: The English translation of the chapter name.
+- `intro-title`: The title for the introductory text inside the `README.md`.
+- `intro-title-en`: The English translation of the intro title.
+- `index`: Ordering integer for the chapter among its siblings.
+- `slug`: The unique URL identifier for the chapter directory. In nested chapters, this field can be left empty to omit the URL level.
 
-### Omitting Subsection Slugs
+> [!WARNING]
+> The directory structure must not exceed 3 levels of depth.
 
-It is allowed to omit subsection slugs (i.e., explicitly set `slug: ""`). If a subsection slug is empty and there is no conflict at the same level, that level may be omitted in the URL.
+### Slug Rules
 
-For example, if the slug in `Twisuki/README.md` is empty, then the URL for `Twisuki/01-article.md` will be `/articles/article` instead of `/articles/twisuki/article`.
+A "slug" is the string used to identify your article or chapter in the final URL. For example, if the chapter slug is `tree-farm` and the article slug is `introduction`, the final URL will be `/tree-farm/introduction`.
+
+Naming Rules:
+
+- Be clear and explicit, reflecting the content of the article. Do not repeat information already included in the chapter slug (e.g., `tree-farm/introduction-to-tree-farms` can be simplified to `tree-farm/introduction`).
+- Ensure the uniqueness of the slug to avoid conflicts with other articles or chapters in the same directory.
+- Do not use uppercase letters, spaces, underscores, or Chinese characters.
+- Do not include chapter or ordering numbers in the slug (e.g., use `title` instead of `01-title`).
+- Empty slugs (`slug: ""`) are permitted. If used on a subsection directory, that directory level will be omitted from the final URL entirely (assuming there are no conflicts).
 
 ## Custom Markdown Syntax
 
-We provide a few custom Markdown enhancements to make technical writing more expressive and engaging. You can use these special tags directly in your articles.
+We provide a few custom Markdown enhancements to make technical writing more expressive and engaging. You can use these special tags directly in your articles (though, of course, they won't render on GitHub).
 
 ### Colored Text
 
-If you need to highlight specific terms or values with colors, use the ANSI color syntax. It works by wrapping your text in brackets with the color name:
+When you need to highlight an easy-to-miss warning or distinguish different colored cables, you can use our ANSI color syntax. It's very simple—just wrap your text in brackets with the color name:
 
 ```markdown
 This is a [red]very important[/red] warning.
@@ -88,26 +116,28 @@ You can also use [bright-blue]brighter colors[/bright-blue].
 ```
 
 **Supported Colors:**
+
 - Standard: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`
 - Bright variants: `bright-black` (gray), `bright-red`, `bright-green`, `bright-yellow`, `bright-blue`, `bright-magenta`, `bright-cyan`, `bright-white`
 
-*Note: Please use colors sparingly so they don't distract the readers.*
+> [!TIP]
+> Use colors with restraint—otherwise the page starts to look like a neon sign.
 
 ### Advanced Content Sections
 
-Sometimes an article contains deep-dive technical details that might overwhelm beginners. You can mark an entire section as "Advanced" by simply adding `[!ADVANCED]` to the end of your heading:
+Deep technical mechanics can easily overwhelm beginners. If a section contains very hardcore content (such as relatively obscure research or code analysis), just append `[!ADVANCED]` to the end of the heading:
 
 ```markdown
 ## How the RNG Manipulation Works [!ADVANCED]
 
-This section will be hidden by default behind a toggle...
+This section will be marked as advanced content.
 ```
 
-When rendered, this heading will get a special "Advanced" badge, and the content under it will be collapsed by default. Readers can click to expand it if they want to dig deeper.
+When rendered, this heading will get a special "Advanced" badge. This keeps the article approachable for beginners while satisfying experts who want to dig deeper.
 
-### Hidden Text (Spoiler / Scratchcard)
+### Hidden Text
 
-If you want to hide a quick spoiler, a pop quiz answer, or an easter egg, use the `<hidden>` tag. The text will be blacked out (like a scratchcard) and will only reveal itself when the reader hovers their mouse over it:
+Want to hide an easter egg or the answer to a puzzle without spoiling it immediately? Use the `<hidden>` tag. The text will be blacked out, revealing itself only when the reader hovers over it:
 
 ```html
 The answer to the puzzle is <hidden>42</hidden>.
@@ -115,24 +145,22 @@ The answer to the puzzle is <hidden>42</hidden>.
 
 ## Git Standards
 
-We don't want to require any `git` knowledge for contributors. However, to preserve traceability and transparency of the editting history, we still have to enforce some standards on commits.
+We do not strictly require contributors to possess Git knowledge. If you use our [online editor](https://beta.techmc.wiki), Git and Pull Requests are handled entirely as the backend, meaning you won't need to manually deal with commits.
 
-If you are not familiar with `git`, don't worry. Our [online editor](https://beta.techmc.wiki) uses Git and Pull Requests as the backend, but most technical details will be hidden from contributors, so most standards can be satisfied effortlessly by simply following the instructions on the website. If you know git and write on your local editor, you might want to read the standards below to make sure your PR can be merged smoothly.
+However, if you are editing files locally and pushing to GitHub, you must follow these standards to ensure your PR merges smoothly:
 
-Reviewers should also read these standards and enforce them when reviewing PRs.
+### Clear Commit Messages
 
-### Clear commit title and description
+Commit messages should be clear and descriptive. A generic message like `Update` is not acceptable.
+Whenever applicable, follow the `scope: subject` format.
 
-Commit messages should be clear and descriptive. Something like `Update` is not acceptable. A good commit message should be concise yet descriptive enough to understand your changes without looking at the diff.
-
-If applicable, you should follow the `scope: subject` format, e.g. `entity ai: add code walkthrough for the pathfinding algorithm`. Try not to exceed 72 characters for the title, you may cramble the rest of the description in the body if necessary.
+Example: `entity-ai: add pathfinding walkthrough`.
 
 ### Merging
 
-For a strict linear history on main, all branches should be merged through squash merges, or only very occasionally, rebase merges. A rebase merge might be used for the following scenarios:
+We strongly prefer squash merges to maintain a clean and linear history on the `main` branch.
+Rebase merges are only considered occasionally if your branch possesses a very long, valuable, and exceptionally well-structured history.
 
-- Your branch has a very long and valuable history that we don't want to lose by squashing.
-- Most commits in your branch are already well-structured and meaningful.
-- Your branch contains a lots of edits that cannot be easily crambled into a single commit.
+### No Merge Commits
 
-Merge commits are strictly prohibited. Do NOT create any of them on your own fork. See [Preventing Merge Commits](NO_MERGE_COMMITS.md) for more instructions on how to avoid creating merge commits. We will revise pull requests to remove merge commits if they contain any.
+**Merge commits are strictly prohibited**. Do NOT create any merge commits on your own fork. If your PR includes a merge commit, reviewers will remove it.
