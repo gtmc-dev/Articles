@@ -135,6 +135,25 @@ This section will be marked as advanced content.
 
 When rendered, this heading will get a special "Advanced" badge. This keeps the article approachable for beginners while satisfying experts who want to dig deeper.
 
+### Callout Blocks
+
+Use callout blocks to draw attention to important information. The syntax follows GitHub's alert format — a blockquote whose first line is `[!TYPE]`:
+
+> [!WARNING]
+> Something the reader should be cautious about.
+
+> [!TIP]
+> A helpful suggestion or shortcut.
+
+> [!IMPORTANT]
+> Critical information the reader must not miss.
+
+> [!CRASH]
+> Steps that may cause the game to crash. If left empty, a default warning is shown automatically.
+
+> [!CORRUPTION]
+> Steps that may corrupt save files. If left empty, a default warning is shown automatically.
+
 ### Hidden Text
 
 Want to hide an easter egg or the answer to a puzzle without spoiling it immediately? Use the `<hidden>` tag. The text will be blacked out, revealing itself only when the reader hovers over it:
