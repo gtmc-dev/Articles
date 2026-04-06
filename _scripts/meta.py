@@ -16,7 +16,7 @@ EXCLUDE_FILES = {
     "CONTRIBUTING.md",
     "CONTRIBUTING_CN.md",
     "Preface.md",
-    "_Test Article.md",
+    "README.md",
 }
 
 BASE_MANAGED_FIELDS = {"author", "co-authors", "date", "lastmod"}
@@ -209,6 +209,8 @@ def write_frontmatter(file_path: Path, frontmatter: dict, body: str):
         default_flow_style=False,
         sort_keys=False,
         indent=2,
+        explicit_start=True,
+        explicit_end=True,
     )
     new_content = f"---\n{frontmatter_str}---\n{body}"
     with open(file_path, "w", encoding="utf-8") as f:
@@ -219,6 +221,8 @@ def find_markdown_files(root: Path) -> list[Path]:
     md_files = []
     for path in root.rglob("*.md"):
         if not path.is_file():
+            continue
+        if path.name.startswith("_"):
             continue
         if path.name in EXCLUDE_FILES:
             continue
