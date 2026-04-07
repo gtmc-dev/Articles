@@ -1,7 +1,7 @@
 ---
 slug: chunk-loading
 chapter-title: 加载票
-chapter-title-en: Loading Ticket
+chapter-title-en: Loading Tickets
 intro-title: 序
 intro-title-en:
 index: -1

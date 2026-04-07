@@ -1,7 +1,7 @@
 ---
 slug: block-update
-chapter-title:
-chapter-title-en:
+chapter-title: 方块更新
+chapter-title-en: Block Update
 intro-title: 引言
 intro-title-en:
 index: -1
