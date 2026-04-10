@@ -4,9 +4,9 @@ title-en: Preface
 slug: preface
 ---
 
-这是一本面向萌新的技术红石入门教材，也是一本面向熟练者的文档。
+Graduate Texts in Minecraft (GTMC) 是一个社区驱动的 Minecraft 技术和红石教程项目。GTMC 可以作为新手入门的指南，也可以作为经验丰富的玩家深入理解 Minecraft 内部机制的文档。
 
-这里有通俗易懂的解释和实例，也有更为复杂的代码解读。
+编辑组将致力于编写提供清晰、准确且易于理解的内容。同时，社区贡献者也可以通过提交 Pull Request 的方式参与到本项目的编写和完善中来。
 
 ## 解释说明
 
