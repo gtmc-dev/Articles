@@ -1,5 +1,5 @@
 ---
-title: 引言
+title: 总序
 title-en: Preface
 slug: preface
 ---
