@@ -33,27 +33,6 @@ index: -1
 
 ---
 
-## 目录
-
-## 本章目录
-
-- [01-预备篇：环境配置和基础知识](Molforte/预备篇：环境配置和基础知识.md)
-- [02-沉淀篇：基础模块的举例讲解](Molforte/沉淀篇：基础模块的举例讲解)
-- [03-实战篇：入门机器的快速上手](Molforte/实战篇：入门机器的快速上手)
-- [0a-附录](0a-附录.md)
-
-## 配套教程
-
-- 相关模块归纳（先欠着）
-- 视频辅助教程（也先欠着）
-
-## 相关网站
-
-- [GraduateTextsInTechnicalMC](https://techmc.wiki/#/)
-- [投影蓝图在线生成器 - Reden](<https://redenmc.com/zh_cn/litematica/old>
-
----
-
 ## 序
 
 这是序

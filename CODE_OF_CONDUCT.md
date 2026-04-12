@@ -2,7 +2,7 @@
 
 To ensure the efficient operation and high content quality of the GraduateTextsInTechnicalMC (GTMC) community, and to uphold our core focus on educational and practical value, we have established this Code of Conduct. All participants must strictly adhere to these guidelines when contributing content, conducting reviews, and interacting within the community.
 
-## 1. Expectations and Standards
+## Expectations and Standards
 
 In our community collaboration and content contributions, we expect and require the following behaviors:
 
@@ -10,7 +10,7 @@ In our community collaboration and content contributions, we expect and require 
 2. Community discussions should remain focused on technical topics. We permit and actively encourage rational academic and technical debates.
 3. Always respect the original work of others. Prominently and clearly cite the original authors when referencing their content.
 
-## 2. Review and Quality Assurance
+## Review and Quality Assurance
 
 The following rules apply to submission reviews and quality control:
 
@@ -21,7 +21,7 @@ The following rules apply to submission reviews and quality control:
 5. Avoid using subjective vocabulary such as "I," "we," "feels like," or "probably." Internet memes, cutesy/colloquial particles, and overly emotional expressions are strictly prohibited. *(Exceptions apply for experience-based or personal-driven content.)*
 6. All abbreviations must be spelled out and explained upon their first appearance. Terminology must remain consistent throughout the entire document without arbitrary switching.
 
-## 3. Enforcement and Appeals
+## Enforcement and Appeals
 
 For behaviors that violate this Code of Conduct, the community management team will take corresponding disciplinary actions based on the severity of the offense:
 
