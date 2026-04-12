@@ -4,7 +4,7 @@ chapter-title: 微时序
 chapter-title-en: Micro Timing
 intro-title:
 intro-title-en:
-index: -1
+index: 2
 ---
 
 # #00 引言
