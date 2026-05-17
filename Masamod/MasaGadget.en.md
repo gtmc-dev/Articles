@@ -2,7 +2,7 @@
 
 slug: masa-gadget
 title: Masa Gadget
-title-en: null
+title-en: "Masa Gadget"
 author: SDU-Little-River
 co-authors:
 - Arcadi4
