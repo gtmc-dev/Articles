@@ -15,7 +15,7 @@ banner:
 ---
 
 
-Some terminology related to this article, mostly taken from the wiki.
+Below is a glossary of terms used in this article. Most translations come from the wiki.
 
 | Full Name                                         | Translation     |
 |---------------------------------------------------|-----------------|

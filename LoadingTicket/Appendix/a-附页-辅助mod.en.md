@@ -19,13 +19,13 @@ banner:
 
 Link: [Modrinth](https://modrinth.com/mod/chunk-debug)
 
-A mod that allows you to view chunk loading status in various locations on the server.
+A mod for viewing chunk loading status on the server.
 
 ## Intricarpet
 
 Link: [Modrinth](https://modrinth.com/mod/intricarpet)
 
-A carpet extension that can disable player chunk loading, useful for debugging.
+A Carpet extension that lets you disable player chunk loading for easier debugging.
 
 `/interaction chunkloading false`
 
@@ -33,4 +33,4 @@ A carpet extension that can disable player chunk loading, useful for debugging.
 
 Link: [Modrinth](https://modrinth.com/mod/messmod)
 
-A toolbox with multiple functions.
+A multi-purpose utility toolkit.

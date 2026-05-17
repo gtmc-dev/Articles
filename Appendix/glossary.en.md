@@ -18,4 +18,4 @@ banner:
 
 ## Overview
 
-This chapter aims to provide detailed explanations to help readers understand the various specialized terms that appear in GTMC.
+This chapter explains the specialized terms and vocabulary used throughout GTMC.
