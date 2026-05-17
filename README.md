@@ -16,4 +16,4 @@ All articles distributed under [CC-BY-NC-SA 4.0](https://creativecommons.org/lic
 
 ## Translation
 
-Until 05/17/2026, all articles were originally written in Chinese and translated by Claude Sonnet 4.5 using [this workflow](https://github.com/gtmc-dev/translation). The latest translations are based on the commit `b881ea81265ca498947f135afd049f52ebd8440b`.
+Until 05/17/2026, all articles were originally written in Chinese and translated by Claude Sonnet 4.5 using [this workflow](https://github.com/gtmc-dev/translation), then revised on tone by MiMo-V2-Pro. The latest translations are based on the commit `b881ea81265ca498947f135afd049f52ebd8440b`.
