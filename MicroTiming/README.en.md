@@ -1,10 +1,8 @@
 ---
-slug: micro-timing
-chapter-title: 微时序
-chapter-title-en: Micro Timing
-intro-title:
-intro-title-en:
-index: 2
+translates: ./README.zh.md
+translated-from-revision: aaf83bc09cb998859849dec491d72f848c43a0e3
+chapter-title: Micro Timing
+intro-title: null
 ---
 
 # #00 Introduction

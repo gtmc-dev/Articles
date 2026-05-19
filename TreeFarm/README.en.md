@@ -1,10 +1,8 @@
 ---
-slug: tree-farm
-chapter-title: 树场
-chapter-title-en: Tree Farm
-intro-title: 前言
-intro-title-en: Foreword
-index: -1
+translates: ./README.zh.md
+translated-from-revision: 365edcc68df67b53fc5dfada26eddfd5a8e69a02
+chapter-title: Tree Farm
+intro-title: Foreword
 ---
 
 At the invitation of BFladderbean, I have decided to lead the writing of foundational teaching materials and accompanying exercises on tree farms to help everyone understand, use, and design tree farms.

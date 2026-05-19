@@ -1,10 +1,8 @@
 ---
-slug: block-update
-chapter-title: 方块更新
-chapter-title-en: Block Update
-intro-title: 引言
-intro-title-en: Introduction
-index: 1
+translates: ./README.zh.md
+translated-from-revision: aaf83bc09cb998859849dec491d72f848c43a0e3
+chapter-title: Block Update
+intro-title: Introduction
 ---
 
 ## Overview

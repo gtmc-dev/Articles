@@ -1,18 +1,10 @@
 ---
-slug: glossary
-title: 术语表
-title-en: Glossary
-author: hotpad100c
-co-authors:
-- Arcadi4
-- BFladderbeanawa
-date: '2025-08-27T13:06:47+08:00'
-lastmod: '2026-04-05T22:16:03+08:00'
-index: 2
-is-advanced: false
+translates: ./专有名词解释.zh.md
+translated-from-revision: daed2c9369cbeb8928e2d30c3e9539bab5447df6
 banner:
   src: img/banner.png
   alt: Graduate Text in Minecraft
+title: Glossary
 ---
 
 

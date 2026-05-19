@@ -1,7 +1,7 @@
 ---
-title: 总序
-title-en: Preface
-slug: preface
+translates: ./Preface.zh.md
+translated-from-revision: b881ea81265ca498947f135afd049f52ebd8440b
+title: Preface
 ---
 
 Graduate Texts in Minecraft (GTMC) is a community-driven project offering technical and redstone tutorials for Minecraft. It serves both as a beginner's guide and as in-depth documentation for experienced players looking to understand Minecraft's internal mechanics.

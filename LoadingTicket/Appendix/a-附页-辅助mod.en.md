@@ -1,18 +1,10 @@
 ---
-slug: helper-mods
-title: 辅助mod
-title-en: Helper Mods
-author: RoyanAB
-co-authors:
-- Arcadi4
-- BFladderbeanawa
-date: '2025-01-24T19:25:44+08:00'
-lastmod: '2026-04-05T22:16:41+08:00'
-index: 2
-is-advanced: false
+translates: ./a-附页-辅助mod.zh.md
+translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
 banner:
   src: ./img/chunkdebug.png
   alt: 演示
+title: Helper Mods
 ---
 
 ## Chunkdebug

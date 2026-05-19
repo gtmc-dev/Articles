@@ -1,10 +1,8 @@
 ---
-slug: masamod
+translates: ./README.zh.md
+translated-from-revision: daed2c9369cbeb8928e2d30c3e9539bab5447df6
 chapter-title: Masa Mod
-chapter-title-en: Masa Mod
-intro-title:
-intro-title-en:
-index: -1
+intro-title: null
 ---
 
 # \#00 Introduction

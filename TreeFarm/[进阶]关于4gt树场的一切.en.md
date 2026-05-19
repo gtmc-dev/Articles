@@ -1,19 +1,10 @@
 ---
-
-slug: 4gt-farms
-title: 关于4gt树场的一切
-title-en: "Everything About 4gt Tree Farms"
-author: jslskd
-co-authors:
-- Arcadi4
-- BFladderbeanawa
-date: '2025-02-05T17:10:25+08:00'
-lastmod: '2026-04-05T22:16:03+08:00'
-index: 7
-is-advanced: true
+translates: ./[进阶]关于4gt树场的一切.zh.md
+translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
 banner:
   src: img/banner.png
   alt: Graduate Text in Minecraft
+title: Everything About 4gt Tree Farms
 ---
 
 

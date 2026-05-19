@@ -1,17 +1,10 @@
 ---
-slug: glossary
-title: 中英术语表
-title-en: Glossary
-author: BFladderbeanawa
-co-authors:
-- Arcadi4
-date: '2026-04-05T22:16:03+08:00'
-lastmod: '2026-04-05T22:16:03+08:00'
-index: 1
-is-advanced: false
+translates: ./b-附页-一些译名.zh.md
+translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
 banner:
   src: img/banner.png
   alt: Graduate Text in Minecraft
+title: Glossary
 ---
 
 

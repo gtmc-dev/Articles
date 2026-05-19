@@ -1,19 +1,10 @@
 ---
-
-slug: masa-gadget
-title: Masa Gadget
-title-en: "Masa Gadget"
-author: SDU-Little-River
-co-authors:
-- Arcadi4
-- BFladderbeanawa
-date: '2025-01-23T16:21:48+08:00'
-lastmod: '2026-04-05T22:16:03+08:00'
-index: 1
-is-advanced: false
+translates: ./MasaGadget.zh.md
+translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
 banner:
   src: img/banner.png
   alt: Graduate Text in Minecraft
+title: Masa Gadget
 ---
 
 

@@ -1,19 +1,10 @@
 ---
-
-slug: litematica
-title: 投影模组教程
-title-en: "Litematica Tutorial"
-author: SDU-Little-River
-co-authors:
-- Arcadi4
-- BFladderbeanawa
-date: '2025-01-23T11:50:01+08:00'
-lastmod: '2026-04-05T22:16:41+08:00'
-index: 2
-is-advanced: false
+translates: ./litematica.zh.md
+translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
 banner:
   src: https://www.xhbsh.top/img/mod/litematica/img.png
   alt: ''
+title: Litematica Tutorial
 ---
 
 ## Brief Introduction to Litematica

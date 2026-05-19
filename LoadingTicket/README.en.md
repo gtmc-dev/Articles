@@ -1,10 +1,8 @@
 ---
-slug: chunk-loading
-chapter-title: 加载票
-chapter-title-en: Loading Tickets
-intro-title: 序
-intro-title-en: Foreword
-index: -1
+translates: ./README.zh.md
+translated-from-revision: daed2c9369cbeb8928e2d30c3e9539bab5447df6
+chapter-title: Loading Tickets
+intro-title: Foreword
 ---
 
 ## Overview
