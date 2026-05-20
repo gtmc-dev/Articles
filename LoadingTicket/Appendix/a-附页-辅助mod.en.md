@@ -3,7 +3,7 @@ translates: ./a-附页-辅助mod.zh.md
 translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
 banner:
   src: ./img/chunkdebug.png
-  alt: 演示
+  alt: Demonstration
 title: Helper Mods
 ---
 
