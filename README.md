@@ -11,6 +11,12 @@ Data source for GTMC chapters, proposed drafts, and translations on the website.
 
 [Read on the Site](https://beta.techmc.wiki) · [Contributing](CONTRIBUTING.md) · [Roadmap](ROADMAP.md) · [Reviewers](REVIEWERS.md)
 
+<!-- README-I18N:START -->
+
+**English** | [汉语](./README.zh.md)
+
+<!-- README-I18N:END -->
+
 </div>
 
 ---
