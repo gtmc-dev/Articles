@@ -29,21 +29,15 @@ Submitting an article is straightforward:
 
 ## Frontmatter Guide
 
-Every Markdown file requires a YAML frontmatter block at the very top of the file to track its metadata.
+Every Markdown file requires a YAML frontmatter block at the very top of the file. Source articles and translations use different frontmatter shapes.
 
-Here is an article metadata example:
+Source articles (`*.zh.md`) define their own URL and source-language metadata:
 
 ```yaml
 ---
 slug: basics-and-structure
 title: 前置知识与树场的基本结构
-title-en: Basics and Structure
-author: YourGitHubName
-co-authors:
-  - Contributor1
-  - Contributor2
-date: '2025-02-02T23:57:52+08:00'
-lastmod: '2025-07-28T21:48:28+08:00'
+description: Optional short summary
 index: 1
 is-advanced: false
 banner:
@@ -52,40 +46,65 @@ banner:
 ---
 ```
 
-Field breakdown:
+Source field breakdown:
 
-- `title`: The primary title of the article.
-- `title-en`: The English translation of the title. (Highly recommended for discoverability)
-- `author`: The primary author's GitHub username. *Does not need manual updating.*
-- `co-authors`: A YAML array of additional contributors' usernames. *Does not need manual updating.*
-- `date`: The original publication or creation date in ISO 8601 format. *Does not need manual updating.*
-- `lastmod`: The date of the most recent significant update in ISO 8601 format. *Does not need manual updating.*
-- `index`: An integer representing the order of the article in its directory. `-1` means unordered, please do not submit articles with `index: -1`.
 - `slug`: The unique URL identifier for the article.
+- `title`: The primary source-language title of the article.
+- `description`: Optional short summary used by previews and metadata.
+- `index`: An integer representing the order of the article in its directory. `-1` means unordered, please do not submit articles with `index: -1`.
 - `is-advanced`: Set to `true` to mark the *entire* article as advanced content.
 - `banner`: A nested object containing `src` (relative image path) and `alt` (accessible description of the image).
 
-Here is a chapter/directory (`README.md`) metadata example:
+Translations (`*.en.md`) link back to their source file and source revision:
+
+```yaml
+---
+translates: ./前置知识与树场的基本结构.zh.md
+translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
+title: Basics and Structure
+description: Optional translated summary
+banner:
+  src: img/banner.png
+  alt: A descriptive alt text
+---
+```
+
+Translation field breakdown:
+
+- `translates`: Relative path to the source article this file translates.
+- `translated-from-revision`: Git commit SHA of the source revision used for the translation.
+- `title`, `description`, and `banner`: Optional translated overrides.
+
+Source chapter/directory `README.zh.md` files use the same source rules, with chapter-specific titles:
 
 ```yaml
 ---
 slug: tree-farm
 chapter-title: 树场
-chapter-title-en: Tree Farm
 intro-title: 前言
-intro-title-en: Preface
 index: -1
 ---
 ```
 
-Field breakdown:
+Translated chapter/directory `README.en.md` files use the translation shape:
+
+```yaml
+---
+translates: ./README.zh.md
+translated-from-revision: 365edcc68df67b53fc5dfada26eddfd5a8e69a02
+chapter-title: Tree Farm
+intro-title: Foreword
+---
+```
+
+Chapter field breakdown:
 
 - `chapter-title`: The display name for the chapter/directory.
-- `chapter-title-en`: The English translation of the chapter name.
 - `intro-title`: The title for the introductory text inside the `README.md`.
-- `intro-title-en`: The English translation of the intro title.
 - `index`: Ordering integer for the chapter among its siblings.
 - `slug`: The unique URL identifier for the chapter directory. In nested chapters, this field can be left empty to omit the URL level.
+
+Do not add legacy fields such as `title-en`, `chapter-title-en`, `intro-title-en`, `author`, `co-authors`, `date`, or `lastmod`. Author and date metadata is derived from Git history by the website pipeline.
 
 > [!WARNING]
 > The directory structure must not exceed 3 levels of depth.

@@ -31,21 +31,15 @@
 
 ## Frontmatter 指南
 
-每篇 Markdown 文件的最顶部都必须包含一个 YAML frontmatter 信息块，用于追踪其元数据。
+每篇 Markdown 文件的最顶部都必须包含一个 YAML frontmatter 信息块。源文章和翻译文章使用不同的 frontmatter 结构。
 
-以下是一个文章元数据示例：
+源文章（`*.zh.md`）定义自己的 URL 与源语言元数据：
 
 ```yaml
 ---
 slug: basics-and-structure
 title: 前置知识与树场的基本结构
-title-en: Basics and Structure
-author: YourGitHubName
-co-authors:
-  - Contributor1
-  - Contributor2
-date: '2025-02-02T23:57:52+08:00'
-lastmod: '2025-07-28T21:48:28+08:00'
+description: 可选的简短摘要
 index: 1
 is-advanced: false
 banner:
@@ -54,40 +48,65 @@ banner:
 ---
 ```
 
-字段含义：
+源文章字段含义：
 
-- `title`：文章的主要标题。
-- `title-en`：标题的英文翻译（强烈建议填写，方便检索）。
-- `author`：主要作者的 GitHub 用户名。*不需要手动更新*
-- `co-authors`：一个 YAML 数组，包含其他贡献者的用户名。*不需要手动更新*
-- `date`：文章的首发或创建日期（ISO 8601 格式）。*不需要手动更新*
-- `lastmod`：最新一次修改的日期（ISO 8601 格式）。*不需要手动更新*
-- `index`：表示文章在目录中的排序。`-1` 表示不排序，请不要提交带有 `index: -1` 的文章。
 - `slug`：文章的唯一 URL 标识符。
+- `title`：文章的源语言标题。
+- `description`：可选的简短摘要，用于预览和页面元数据。
+- `index`：表示文章在目录中的排序。`-1` 表示不排序，请不要提交带有 `index: -1` 的文章。
 - `is-advanced`：设为 `true` 可以将**整篇**文章标记为进阶内容。
 - `banner`：包含 `src`（相对图片路径）和 `alt`（图片的文本描述）的嵌套字段。
 
-以下是一个章节/目录 (`README.md`) 元数据示例：
+翻译文章（`*.en.md`）指向对应的源文件和源修订版本：
+
+```yaml
+---
+translates: ./前置知识与树场的基本结构.zh.md
+translated-from-revision: 20ad46927f7ac8db7b9c875504c9a899209214af
+title: Basics and Structure
+description: Optional translated summary
+banner:
+  src: img/banner.png
+  alt: A descriptive alt text
+---
+```
+
+翻译字段含义：
+
+- `translates`：该文件所翻译的源文章相对路径。
+- `translated-from-revision`：翻译所依据的源文章 Git commit SHA。
+- `title`、`description` 和 `banner`：可选的翻译覆盖字段。
+
+源章节/目录 `README.zh.md` 使用同样的源文章规则，并填写章节标题字段：
 
 ```yaml
 ---
 slug: tree-farm
 chapter-title: 树场
-chapter-title-en: Tree Farm
 intro-title: 前言
-intro-title-en: Preface
 index: -1
 ---
 ```
 
-字段含义：
+翻译章节/目录 `README.en.md` 使用翻译结构：
+
+```yaml
+---
+translates: ./README.zh.md
+translated-from-revision: 365edcc68df67b53fc5dfada26eddfd5a8e69a02
+chapter-title: Tree Farm
+intro-title: Foreword
+---
+```
+
+章节字段含义：
 
 - `chapter-title`：章节或目录的显示名称。
-- `chapter-title-en`：章节名称的英文翻译。
 - `intro-title`：该 `README.md` 内引言部分的标题。
-- `intro-title-en`：引言标题的英文翻译。
 - `index`：该章节在同级目录中的排序序号。
 - `slug`：该章节目录的唯一 URL 标识符。在嵌套章节中，本字段允许留空来省略 URL 层级。
+
+不要再添加 `title-en`、`chapter-title-en`、`intro-title-en`、`author`、`co-authors`、`date` 或 `lastmod` 等旧字段。作者和日期元数据由网站流水线从 Git 历史中生成。
 
 > [!WARNING]
 > 目录层级结构不可超过 3 级。
