@@ -3,7 +3,7 @@ slug: masa-gadget
 index: 1
 is-advanced: false
 banner:
-  src: img/banner.png
+  src: /img/banner.png
   alt: Graduate Text in Minecraft
 title: Masa Gadget
 ---

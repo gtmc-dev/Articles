@@ -3,7 +3,7 @@ slug: glossary
 index: 1
 is-advanced: false
 banner:
-  src: img/banner.png
+  src: /img/banner.png
   alt: Graduate Text in Minecraft
 title: 中英术语表
 ---
@@ -12,7 +12,7 @@ title: 中英术语表
 一些跟本文有关的译名，大部分取自于wiki。
 
 | 全称                                              | 译名     |
-|---------------------------------------------------|----------|
+| ------------------------------------------------- | -------- |
 | **Lazy Processing Chunk/Lazy Load/Block Ticking** | 弱加载   |
 | **Entity Processing Chunk/Entity Ticking**        | 强加载   |
 | **Loading Border Chunk/Border Load**              | 加载边界 |

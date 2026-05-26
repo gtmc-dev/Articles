@@ -3,7 +3,7 @@ slug: 4gt-farms
 index: 7
 is-advanced: true
 banner:
-  src: img/banner.png
+  src: /img/banner.png
   alt: Graduate Text in Minecraft
 title: 关于4gt树场的一切
 ---
