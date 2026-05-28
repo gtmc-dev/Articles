@@ -1,7 +1,7 @@
 ---
 slug: twisuki
 index: -1
-chapter-title: null
+chapter-title: Twisuki
 intro-title: 序
 ---
 
